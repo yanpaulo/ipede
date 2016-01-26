@@ -424,6 +424,7 @@
     <Content Include="Content\images\close.psd" />
     <Content Include="Content\images\img-sprite.psd" />
     <Content Include="Content\images\Thumbs.db" />
+    <None Include="Properties\PublishProfiles\Filesystem.pubxml" />
     <None Include="Properties\PublishProfiles\RaveHost.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\classie.js" />
