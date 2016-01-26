@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
+using iPede.Site;
 
 namespace iPede.Site
 {
@@ -20,8 +21,8 @@ namespace iPede.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Entities.iPedeContext, 
-            //    Migrations.Configuration>()); 
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Entities.iPedeContext,
+                Migrations.Configuration>());
         }
     }
 }

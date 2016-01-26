@@ -1,4 +1,4 @@
-namespace Isofrio.Site.Migrations
+namespace iPede.Site.Migrations
 {
     using System;
     using System.Data.Entity;
