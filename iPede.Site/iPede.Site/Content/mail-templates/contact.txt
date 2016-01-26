@@ -1,0 +1,11 @@
+﻿Mensagem:
+<#Content#>
+
+Informações:
+Nome: <#Name#>
+Email: <#Email#>
+Telefone: <#Phone#>
+
+
+---
+Email enviado pelo site da Handicap

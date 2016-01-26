@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Orçamento";
+}
+
+<section class="title">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6">
+                <h1>Orçamento</h1>
+            </div>
+            <div class="span6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                    <li><a href="index.html">Carrinho</a> <span class="divider">/</span></li>
+                    <li><a href="index.html">Orçamento</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / .title -->   
+
+<section id="contact-page" class="container">
+    <div class="row-fluid">
+
+        <div class="span12">
+            <h4>Formulário de Solicitação de Orçamento</h4>
+            <div class="status alert alert-success" style="display: none"></div>
+
+            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+                <div class="row-fluid">
+                    <div class="span5">
+                        <label>Primeiro Nome</label>
+                        <input type="text" class="input-block-level" required="required" placeholder="Seu primeiro nome">
+                        <label>Último Nome</label>
+                        <input type="text" class="input-block-level" required="required" placeholder="Seu último nome">
+                        <label>Endereço de E-mail</label>
+                        <input type="text" class="input-block-level" required="required" placeholder="Seu e-mail">
+                        <label>Telefone</label>
+                        <input type="text" class="input-block-level" required="required" placeholder="Seu telefone">
+                    </div>
+                    <div class="span7">
+                        <label>Observações</label>
+                        <textarea name="message" id="message" required="required" class="input-block-level" rows="20"></textarea>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary btn-large pull-right">Solicitar Orçamento</button>
+                <p> </p>
+
+            </form>
+        </div>
+
+        
+
+    </div>
+
+</section>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<iPede.Site.Models.Entities.Product>
+@{
+    ViewBag.Title = "Produtos";
+}
+<section class="title">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span6">
+                <h1>Produtos</h1>
+            </div>
+            <div class="span6">
+                <ul class="breadcrumb pull-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home") <span class="divider">/</span></li>
+                    <li>@Html.ActionLink("Produtos", "Products") <span class="divider">/</span></li>
+                    @{ var categoryPath = ViewBag.CategoryPath as IEnumerable<iPede.Site.Models.Entities.Category>; }
+                    @foreach (var item in categoryPath)
+                    {
+                        if (item != categoryPath.Last())
+                        {
+                            <li>@Html.ActionLink(item.Name, "Category", new { id = item.CategoryId }) <span class="divider">/</span></li>
+                        }
+                        else
+                        {
+                            <li class="active">@item.Name</li>
+                        }
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / .title -->
+
+<section id="about-us" class="container main">
+    <div class="row-fluid">
+
+        @Html.Partial("CategoriesList", ViewBag.Categories as object)
+        <div class="span8">
+            @Html.Partial("ProductsList")
+        </div>
+    </div>
+
+</section>
+
+@section scripts{
+    <script>
+        updateCart();
+    </script>
+}

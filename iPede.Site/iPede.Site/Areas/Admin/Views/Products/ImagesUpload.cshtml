@@ -1,0 +1,22 @@
+﻿@model IList<iPede.Site.Models.Entities.ProductImage>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    int? defaultImageIndex = ViewBag.defaultImageIndex as int?;
+    string itemId = "defaultImageIndex_" + i;
+    bool isDefault = (i == defaultImageIndex.GetValueOrDefault(-1)) ? true : false;
+    <div class="uploaded-image">
+        <div>
+            <div>
+                <input id="@itemId" type="radio" name="defaultImageIndex" value="@i" checked="@isDefault" />
+                <label for="@itemId">Padrão</label>
+            </div>
+            <div>
+                <a href="javascript:void()" onclick="deleteImage('@i')">[excluir]</a>
+            </div>
+        </div>
+
+        <img width="128" height="128" src="@Url.Content(Model[i].Url)" onclick="imageClick('@itemId')" alt="Imagem" />
+    </div>
+
+}

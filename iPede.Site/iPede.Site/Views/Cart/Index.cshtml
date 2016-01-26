@@ -1,0 +1,77 @@
+﻿@model iPede.Site.Models.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Carrinho";
+}
+@section styles {
+    @Styles.Render("~/Content/cart-css")
+}
+@section scripts {
+    <script>
+        $(function () {
+            loadActions();
+        });
+
+        //Loads actions for elements
+        function loadActions() {
+            $(".cart_quantity_up").click(function () {
+                incrementQuantity($(this), 1);
+            });
+            $(".cart_quantity_down").click(function () {
+                incrementQuantity($(this), -1);
+            });
+            $(".cart_quantity_input").change(function () {
+                var index = $(this).data("index"),
+                    quantity = $(this).val();
+                updateQuantity(index, quantity);
+            })
+        }
+
+        //Increments a given quantity in product for a given button (where button is the jQuery object for the button) 
+        function incrementQuantity(button, increment) {
+            var tBox = button.siblings(".cart_quantity_input");
+            var index = tBox.data("index"),
+                quantity = parseInt(tBox.val()) + increment;
+            updateQuantity(index, quantity);
+        }
+
+        function remove(index) {
+            $.ajax('@Url.Action("Remove")',
+                {
+                    type: 'POST',
+                    data: { index: index },
+                    cache: false,
+                    success: function (data) {
+                        $("#cartDiv").html(data);
+                        //Load actions for elements, since the partial view was reloaded
+                        loadActions();
+                    }
+                });
+        }
+
+        //Internal functions:
+        //Makes an Ajax call to update quantity for a given product in a given index from the cart
+        function updateQuantity(index, quantity) {
+            $.ajax('@Url.Action("UpdateQuantity")', {
+                type: 'POST',
+                data: { index: index, quantity: quantity },
+                cache: false,
+                success: function (data) {
+                    $("#cartDiv").html(data);
+                    //Load actions for elements, since the partial view was reloaded
+                    loadActions();
+                }
+            });
+        }
+    </script>
+}
+<section id="cart_items" class="container">
+    <div class="center">
+        <h3 class="m_2">Carrinho de compras</h3>
+
+    </div>
+    <p>&nbsp;</p>
+    <div id="cartDiv">@Html.Partial("ListPartial")</div>
+    <p>&nbsp;</p>
+</section>
+
+

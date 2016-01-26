@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Gerenciamento";
+}
+
+<div class="jumbotron">
+    <h1>Gerenciamento</h1>
+    <p class="lead">Esta é a página de gerenciamento do site Handicap. Páginas de conteúdo, e outros itens do site serão gerenciados por aqui.</p>
+    <p><a href="~/" class="btn btn-primary btn-lg">Ir para o site &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Categorias</h2>
+        <p>
+            Aqui você gerencia as categorias de produto e os produtos dentro dela.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Categories")">Gerenciar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Produtos</h2>
+        <p>Aqui você gerencia os produtos sem a necessidade de passar pelas categorias.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Products")">Gerenciar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Home Page</h2>
+        <p>Gerenciamento de elementos da Home Page, como Banner e produtos principais.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "BannerItems")">Gerenciar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Serviços</h2>
+        <p>Gerenciamento de serviços.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Services")">Gerenciar &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Quem Somos</h2>
+        <p>Gerenciamento da página Quem Somos.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "AboutUs")">Gerenciar &raquo;</a></p>
+    </div>
+</div>

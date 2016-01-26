@@ -1,0 +1,102 @@
+﻿@model iPede.Site.Models.Entities.AboutUs
+
+@{
+    ViewBag.Title = "Quem Somos";
+}
+
+@Styles.Render("~/Content/cdn-font-css")
+@Styles.Render("~/Content/site-css")
+
+<h1>Quem Somos</h1>
+<hr/>
+<!-- / .title -->
+
+<section id="about-us" class="container main">
+    <div class="row-fluid">
+        
+        <div class="span6">
+            <div class="span12">
+                <h2 style="float:left;">@Html.DisplayFor(model => model.FirstQuadrantTitle)</h2> 
+                <div style="float:right;">@Html.ActionLink("[Editar]", "Edit", new { id = "1" })</div>
+            </div>
+            <p>@Html.DisplayFor(model => model.FirstQuadrantDescription)</p>
+        </div>
+
+        <div class="span6">
+            <div class="span12">
+                <h2 style="float:left;">@Html.DisplayFor(model => model.SecondQuadrantTitle)</h2>
+                <div style="float:right;">@Html.ActionLink("[Editar]", "Edit", new { id = "2" })</div>
+            </div>
+
+            <div>
+                <div class="progress"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Padarias</div></div>
+                <div class="progress progress-warning"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Frigoríficos</div></div>
+                <div class="progress progress-info"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Mercantis</div></div>
+                <div class="progress progress-danger"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Lanchonetes</div></div>
+                <div class="progress"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Restaurantes</div></div>
+                <div class="progress progress-warning"><div class="bar" style="width: 100%; text-align:left; padding-left:10px;">Hotéis</div></div>
+            </div>
+        </div>
+    </div>
+
+    <p>&nbsp;</p>
+    <p></p>
+    <hr>
+
+    <div class="row-fluid">
+        
+        <div class="span6">
+            <div class="span12">
+                <h3 style="float:left;">@Html.DisplayFor(model => model.FourthQuadrantTitle)</h3>
+                <div style="float:right;">@Html.ActionLink("[Editar]", "Edit", new { id = "4" })</div>
+            </div>
+            <p>@Html.DisplayFor(model => model.FourthQuadrantDescription)</p>
+        </div>
+
+        <div class="span6">
+            <div class="span12">
+                <h3 style="float:left;">@Html.DisplayFor(model => model.ThirdQuadrantTitle)</h3>
+                <div style="float:right;">@Html.ActionLink("[Editar]", "Edit", new { id = "3" })</div>
+            </div>
+
+            <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            Equipamentos para o seu negócio
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            Câmaras frias sob medida
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                            Produtos para a sua casa
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="accordion-body collapse">
+                        <div class="accordion-inner">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

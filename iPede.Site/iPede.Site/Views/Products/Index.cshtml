@@ -1,0 +1,21 @@
+﻿@model IEnumerable<iPede.Site.Models.Entities.Product>
+@{
+    ViewBag.Title = "Produtos";
+}
+
+<div class="main">
+    <div class="content-top">
+        <h2>Camisetas</h2>
+        <div class="shop_top">
+            <div class="container">
+                @Html.Partial("ProductsList", Model)
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        updateCart();
+    </script>
+}

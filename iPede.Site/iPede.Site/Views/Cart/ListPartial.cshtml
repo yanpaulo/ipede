@@ -1,0 +1,63 @@
+﻿@model iPede.Site.Models.ShoppingCartViewModel
+
+@if (Model.Items.Count > 0)
+{
+    using (Html.BeginForm("Finish", "Cart", FormMethod.Post))
+    {
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Preço</td>
+                        <td class="quantity">Quantidade</td>
+                        <td class="total">Total</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Items.Count; i++)
+                    {
+                        var item = Model.Items[i];
+                        <tr>
+                            <td class="cart_product">
+                                <a href="">
+                                    <img src="@Url.Content(item.Product.MainOrNoImage.Url)" alt="@Url.Content(item.Product.Name)" title="" width="100" height="100">
+                                </a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="">@item.Product.Name</a></h4>
+                                <p>ID: 1089772</p>
+                            </td>
+                            <td class="cart_price">
+                                <p>R$@item.Product.Price.ToString()</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <a class="cart_quantity_up" href="javascript:void(0)"> + </a>
+                                    @Html.TextBoxFor(model => model.Items[i].Ammount, htmlAttributes: new { @class = "cart_quantity_input", size = "2", autocomplete = "off", data_index = i })
+                                    <a class="cart_quantity_down" href="javascript:void(0)"> - </a>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">R$@((item.Product.Price * item.Ammount).ToString())</p>
+                            </td>
+                            <td class="cart_delete">
+                                @*<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>*@
+                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="remove('@i');">X</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="form-submit">
+            <input name="submit" type="submit" id="submit" value="Comprar"><br>
+        </div>
+    }
+}
+else
+{
+    <h2>Adicione itens ao carrinho!</h2>
+}

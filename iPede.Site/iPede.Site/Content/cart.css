@@ -1,0 +1,55 @@
+﻿#cart_items .cart_info {
+	border: 1px solid rgb(230, 228, 223); border-image: none; margin-bottom: 50px;
+}
+#cart_items .cart_info .cart_menu {
+	background: rgb(58, 92, 131); color: rgb(255, 255, 255); font-family: "Roboto", sans-serif; font-size: 16px; font-weight: normal;
+}
+#cart_items .cart_info .table.table-condensed thead tr {
+	height: 51px;
+}
+#cart_items .cart_info .table.table-condensed tr {
+	
+}
+#cart_items .cart_info .table.table-condensed tr:last-child {
+	border-bottom-color: currentColor; border-bottom-width: 0px; border-bottom-style: none;
+}
+.cart_info table tr td {
+	vertical-align: inherit; border-top-color: currentColor; border-top-width: 0px; border-top-style: none;
+}
+
+#cart_items .cart_info .image {
+	padding-left: 30px;
+}
+#cart_items .cart_info .cart_description h4 {
+	margin-bottom: 0px;
+}
+#cart_items .cart_info .cart_description h4 a {
+	color: rgb(54, 52, 50); font-family: "Roboto",sans-serif; font-size: 20px; font-weight: normal;
+}
+#cart_items .cart_info .cart_description p {
+	color: rgb(105, 103, 99);
+}
+#cart_items .cart_info .cart_price p {
+	color: rgb(105, 103, 99); font-size: 18px;
+}
+#cart_items .cart_info .cart_total_price {
+	color: rgb(58, 92, 131); font-size: 24px;
+}
+.cart_product {
+	margin: 15px -70px 10px 25px; display: block;
+}
+.cart_quantity_button a {
+	background: rgb(240, 240, 233); width: 35px; height: 28px; text-align: center; color: rgb(105, 103, 99); overflow: hidden; font-size: 16px; float: left; display: inline-block;
+}
+.cart_quantity_input {
+	text-align: center; color: rgb(105, 103, 99); font-family: "Roboto",sans-serif; font-size: 16px; float: left; border: 1px solid #DFE0E2;
+}
+.cart_delete {
+	overflow: hidden; margin-right: -12px; display: block;
+}
+.cart_delete a {
+	background: rgb(240, 240, 233); padding: 5px 7px; color: rgb(255, 255, 255); font-size: 16px;
+}
+.cart_delete a:hover {
+	background: rgb(58, 92, 131);
+}

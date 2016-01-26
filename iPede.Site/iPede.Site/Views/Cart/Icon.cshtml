@@ -1,0 +1,42 @@
+﻿@model iPede.Site.Models.ShoppingCartViewModel
+<div id="cart-icon-div">
+    <ul class="icon1 sub-icon1 profile_img">
+        <li>
+            <a class="active-icon c1" href="#"></a>
+
+            <ul class="sub-icon1 list">
+                <div class="product_control_buttons">
+                    <a href="#"><img src="@Url.Content("~/Content/images/edit.png")" alt="" /></a>
+                    <a href="#"><img src="@Url.Content("~/Content/images/close_edit.png")" alt="" /></a>
+                </div>
+                <div class="clear"></div>
+                @if (Model.Items.Count > 0)
+                {
+                    foreach (var item in Model.Items)
+                    {
+                        <li class="list_img"><img src="@Url.Content(item.Product.MainOrNoImage.ThumbUrl)" width="50" height="50" alt="" /></li>
+                        <li class="list_desc">
+                            <h4><a href="#">@item.Product.Name</a></h4><span class="actual">
+                                @item.Ammount x
+                                @Html.DisplayFor(modelItem => item.Product.Price)
+                            </span>
+
+                        </li>
+
+                    }
+                }
+                else
+                {
+                    <h4>Sem itens.</h4>
+                }
+
+                <div class="login_buttons">
+                    <div class="check_button"><a href="@Url.Action("Index", "Cart")">Carrinho</a></div>
+                    <div class="login_button"><a href="javascript:void()">Comprar</a></div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </ul>
+        </li>
+    </ul>
+</div>

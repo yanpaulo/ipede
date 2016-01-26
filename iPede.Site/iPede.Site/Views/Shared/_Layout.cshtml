@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <title>Old Is Cool</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    @Styles.Render("~/Content/cdn-font-css")
+    @Styles.Render("~/Content/site-css")
+    @RenderSection("styles", false)
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-left">
+                        <div class="logo">
+                            <a href="@Url.Action("Index", "Home")"><img src="@Url.Content("~/Content/images/logo.png")" width="100" alt="" /></a>
+                        </div>
+                        @Html.Action("Index", "Menu")
+                    </div>
+                    <div class="header_right">
+                        <!-- start search-->
+                        <div class="search-box">
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Busque aqui" type="search" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"> </span>
+                                </form>
+                            </div>
+                        </div>
+                        <!--Ícone do carrinho-->
+                        @Html.Action("Icon", "Cart")
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("mainTop", false)
+    <div class="main">
+        <div class="shop_top">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    @RenderSection("mainBottom", false)
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Produtos</h4>
+                        <li><a href="#">Masculino</a></li>
+                        <li><a href="#">Feminino</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Sobre</h4>
+                        <li><a href="#">Nós</a></li>
+                        <li><a href="#">A empresa</a></li>
+                        <li><a href="#">Estilo</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Consumidor</h4>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Frete</a></li>
+                        <li><a href="#">Devolução</a></li>
+                        <li><a href="#">Troca</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul class="footer_box">
+                        <h4>Newsletter</h4>
+                        <div class="footer_search">
+                            <form>
+                                <input type="text" value="Seu email aqui" onfocus="this.value = '';" onblur="    if (this.value == '') { this.value = 'Seu email aqui'; }">
+                                <input type="submit" value="Go">
+                            </form>
+                        </div>
+                        <ul class="social">
+                            <li class="facebook"><a href="https://www.facebook.com/OldIsCoolClothing" target="_blank"><span> </span></a></li>
+                            <li class="twitter"><a href="#"><span> </span></a></li>
+                            <li class="instagram"><a href="https://instagram.com/oldiscoolc/" target="_blank"><span> </span></a></li>
+                        </ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row footer_bottom">
+                <div class="copy">
+                    <p>© 2015 <a href="handicap.yanscorp.com" target="_blank">Old Is Cool</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Genérica-->
+    <div id="modal-loading" style="display: none">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Carregando...</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="@Url.Content("~/Content/images/loading.gif")" alt="Carregando..." />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="site-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        
+    </div>
+    
+    @Scripts.Render("~/bundles/site")
+    <!----//search-scripts---->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@model iPede.Site.Models.Entities.Product
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="modalTitle">Adicionado ao carrinho</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-5"><img src="@Url.Content(Model.MainOrNoImage.Url)?h=150&mode=pad" class="img-responsive" alt="" /></div>
+        <div class="col-md-7">
+            <a href="@Url.Action("Item", "Products", new { @id = Model.ProductId })">
+
+                <div class="shop_desc">
+                    <h3><a href="#">@Model.Name</a></h3>
+                    <p>@Model.ShortDescription </p>
+                    <span class="actual">@Html.DisplayFor(modelItem => Model.Price)</span><br>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Continuar comprando</button>
+    @Html.ActionLink("Carrinho", "Index", "Cart", new { }, new { @class = "btn btn-primary" })
+</div>

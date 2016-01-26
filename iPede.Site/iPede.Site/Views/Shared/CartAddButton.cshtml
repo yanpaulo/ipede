@@ -1,0 +1,8 @@
+﻿@model iPede.Site.Models.Entities.Product
+@*CartAddButton só é exibido corretamente ao chamar o método javascript updateCart, na section scripts*@
+<a href="javascript:void(0)" class="cart-add-button" data-product-id="@Model.ProductId" style="display:none/* margin-left: 10px; */">
+    Adicionar
+</a>
+<a href="javascript:void(0)" class="cart-present-button" data-product-id="@Model.ProductId" style="display:none/* margin-left: 10px; */">
+    No carrinho
+</a>

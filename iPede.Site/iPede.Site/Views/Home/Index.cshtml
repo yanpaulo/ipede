@@ -1,0 +1,113 @@
+﻿@model iPede.Site.Models.HomePageViewModel
+@{
+    ViewBag.Title = "Home";
+}
+
+@section styles{
+    @Styles.Render("~/Content/home-css")
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/home")
+    <script>
+        updateCart();
+    </script>
+}
+
+@section mainTop {
+    <div class="banner">
+        @Html.Partial("Banner", Model.BannerItems)
+    </div>
+}
+
+<div class="main">
+    <div class="content-top">
+        <h2>Camisetas</h2>
+        <div class="shop_top">
+            <div class="container">
+                @Html.Partial("~/Views/Products/ProductsList.cshtml", Model.Products)
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section mainBottom {
+    <div class="content-bottom">
+        <div class="container">
+            <div class="row content_bottom-text">
+                <div class="col-md-7">
+                    <h3>No tempo<br>certo</h3>
+                    <p class="m_1">Vestir não é mais só vestir, é um direito de mostrar sua atitude, criar sua própria identidade, deixar sua marca onde passa. Unindo elementos do passado e presente numa mistura atemporal que vai moldando os novos tempos.</p>
+                    <p class="m_2">Cor, linguagem, arte, intervenção, protesto, provocação, reunidos em uma camiseta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="container">
+            <h3 class="m_3">Nossa arte, seu estilo.</h3>
+            <div class="close_but"><i class="close1"> </i></div>
+            <div class="row">
+                <div class="col-md-3 top_box">
+                    <div class="view view-ninth">
+                        <a href="single.html">
+                            <img src="@Url.Content("~/Content/images/home-bottom-2.jpg")" class="img-responsive" alt="" />
+                            <div class="mask mask-1"> </div>
+                            <div class="mask mask-2"> </div>
+                            <div class="content">
+                                <h2>Arte</h2>
+                                <p></p>
+                            </div>
+                        </a>
+                    </div>
+                    <h4 class="m_4"><a href="#">Arte</a></h4>
+                </div>
+                <div class="col-md-3 top_box">
+                    <div class="view view-ninth">
+                        <a href="single.html">
+                            <img src="@Url.Content("~/Content/images/home-bottom-1.jpg")" class="img-responsive" alt="" />
+                            <div class="mask mask-1"> </div>
+                            <div class="mask mask-2"> </div>
+                            <div class="content">
+                                <h2>Camisetas</h2>
+                                <p></p>
+                            </div>
+                        </a>
+                    </div>
+                    <h4 class="m_4"><a href="#">Camisetas</a></h4>
+                </div>
+                <div class="col-md-3 top_box">
+                    <div class="view view-ninth">
+                        <a href="single.html">
+                            <img src="@Url.Content("~/Content/images/home-bottom-3.jpg")" class="img-responsive" alt="" />
+                            <div class="mask mask-1"> </div>
+                            <div class="mask mask-2"> </div>
+                            <div class="content">
+                                <h2>Estilo</h2>
+                                <p></p>
+                            </div>
+                        </a>
+                    </div>
+                    <h4 class="m_4"><a href="#">Estilo</a></h4>
+                </div>
+                <div class="col-md-3 top_box1">
+                    <div class="view view-ninth">
+                        <a href="single.html">
+                            <img src="@Url.Content("~/Content/images/home-bottom-4.jpg")" class="img-responsive" alt="" />
+                            <div class="mask mask-1"> </div>
+                            <div class="mask mask-2"> </div>
+                            <div class="content">
+                                <h2>Expressão</h2>
+                                <p></p>
+                            </div>
+                        </a>
+                    </div>
+                    <h4 class="m_4"><a href="#">Expressão</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
