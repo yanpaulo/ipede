@@ -63,6 +63,7 @@ namespace iPede.Site.Controllers
 
         public ActionResult Item(int id)
         {
+            throw new NotImplementedException();
             Product p = db.Products.Find(id);
             if (p.MainImage == null)
             {
