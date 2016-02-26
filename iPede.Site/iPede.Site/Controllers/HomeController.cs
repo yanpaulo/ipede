@@ -16,14 +16,13 @@ namespace iPede.Site.Controllers
 
         public ActionResult Index()
         {
-            //var bannerItems = db.BannerItems.ToList();
-            //var categories = db.Categories.Where(item => item.ParentCategoryId == null);
-            //var products = db.Products.Take(9).ToList();
-            //ViewBag.BannerItems = bannerItems;
-            //ViewBag.Categories = categories;
-            //HomePageViewModel model = new HomePageViewModel() { BannerItems = bannerItems, Categories = categories, Products = products };
-            //return View(model);
-            return Redirect("~/Admin");
+            var bannerItems = db.BannerItems.ToList();
+            var categories = db.Categories.Where(item => item.ParentCategoryId == null);
+            var products = db.Products.Take(9).ToList();
+            ViewBag.BannerItems = bannerItems;
+            ViewBag.Categories = categories;
+            HomePageViewModel model = new HomePageViewModel() { BannerItems = bannerItems, Categories = categories, Products = products };
+            return View(model);
         }
 
         public ActionResult About()

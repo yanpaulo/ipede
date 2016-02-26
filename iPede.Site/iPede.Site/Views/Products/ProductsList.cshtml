@@ -1,30 +1,26 @@
 ﻿@model IEnumerable<iPede.Site.Models.Entities.Product>
 
-<div class="row">
+<div class="row text-center">
     @foreach (var item in Model)
     {
-        <div class="col-md-3 shop_box">
-            <a href="@Url.Action("Item", "Products", new { @id = item.ProductId })">
-                <img src="@Url.Content(item.MainOrNoImage.Url)?w=300&h=400&mode=pad" class="img-responsive" alt="" />
-                <span class="new-box">
-                    <span class="new-label">New</span>
-                </span>
-                <div class="shop_desc">
-                    <h3><a href="#">@item.Name</a></h3>
-                    <p>@item.ShortDescription </p>
-                    @*<span class="reducedfrom">R$999,00</span>*@
-                    <span class="actual">@Html.DisplayFor(modelItem => item.Price)</span><br>
-                    <ul class="buttons">
-                        <li class="cart">@Html.Partial("CartAddButton", item)</li>
-                        <li class="shop_btn">@Html.ActionLink("Detalhes", "Item", "Products", new { @id = item.ProductId }, new object())</li>
-                        <div class="clear"> </div>
-                    </ul>
-                </div>
-            </a>
-        </div>
+        <a href="@Url.Action("Item", "Products", new { @id = item.ProductId })">
+            <img src="@Url.Content(item.MainOrNoImage.Url)?w=300&h=400&mode=pad" class="img-responsive" alt="" />
+            <div>
+                <h3><a href="#">@item.Name</a></h3>
+                <p>@item.ShortDescription </p>
+                @*<span class="reducedfrom">R$999,00</span>*@
+                <span class="actual">@Html.DisplayFor(modelItem => item.Price)</span><br>
+                <ul class="buttons">
+                    <li class="cart">@Html.Partial("CartAddButton", item)</li>
+                    <li class="shop_btn">@Html.ActionLink("Detalhes", "Item", "Products", new { @id = item.ProductId }, new { @class = "btn btn-default" })</li>
+                    <div class="clear"> </div>
+                </ul>
+            </div>
+        </a>
+    </div>
     }
 
     <div id="modalDiv" class="col-md-3 shop_box" style="background-color: white; border: 2px solid black; display: none">
     </div>
-</div>
+    </div>
 

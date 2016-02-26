@@ -33,17 +33,11 @@ namespace iPede.Site
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/respond.js",
-                //Coisas do template
-                        "~/Scripts/responsive-nav.js",
-                        "~/Scripts/classie.js",
-                        "~/Scripts/respond.js",
-                        "~/Scripts/uisearch.js",
                 //Custom js
                         "~/Scripts/main.js"));
 
             //Home page
             bundles.Add(new ScriptBundle("~/bundles/home").Include(
-                    "~/Scripts/jquery-ui-{version}.js",
                       "~/Scripts/fwslider.js"));
 
             //Product

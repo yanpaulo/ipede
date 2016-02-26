@@ -232,6 +232,7 @@
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\fale-conosco.jpg" />
     <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\images\no-image.jpg" />
     <Content Include="Content\images\skatistas.jpg" />
     <Content Include="Content\images\3.jpg" />
     <Content Include="Content\images\4.jpg" />
@@ -477,7 +478,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -517,6 +517,7 @@
     <Content Include="Scripts\validate-fix.js" />
     <Content Include="Views\Cart\ListPartial.cshtml" />
     <Content Include="Views\Cart\ItemAddedPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
