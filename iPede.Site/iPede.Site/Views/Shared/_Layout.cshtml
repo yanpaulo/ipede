@@ -7,7 +7,7 @@
     <title>@ViewBag.Title - iPede</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-    @Styles.Render("~/Content/admin-css")
+    @Styles.Render("~/Content/site-css")
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -29,8 +29,8 @@
                     <li>@Html.ActionLink("Cardápio", "Index", "Products")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="@Url.Action("Index", "Cart")" style="padding:10px"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    <li class="cart-icon">
+                        <a href="@Url.Action("Index", "Cart")"><i class="fa fa-shopping-cart fa-2x"></i></a>
                     </li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@

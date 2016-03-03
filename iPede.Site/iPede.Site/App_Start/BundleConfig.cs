@@ -56,7 +56,8 @@ namespace iPede.Site
 
             bundles.Add(new StyleBundle("~/Content/site-css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/style.css"));
+                      "~/Content/bootstrap-responsive.css",
+                      "~/Content/misc.css"));
 
             //Home
             bundles.Add(new StyleBundle("~/Content/home-css").Include(
