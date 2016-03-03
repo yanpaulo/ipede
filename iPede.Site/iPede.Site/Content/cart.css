@@ -32,6 +32,9 @@
 #cart_items .cart_info .cart_price p {
 	color: rgb(105, 103, 99); font-size: 18px;
 }
+#cart_items .cart_info .cart_total {
+	width: 200px;
+}
 #cart_items .cart_info .cart_total_price {
 	color: rgb(58, 92, 131); font-size: 24px;
 }

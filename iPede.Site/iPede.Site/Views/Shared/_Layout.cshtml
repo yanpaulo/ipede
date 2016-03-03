@@ -21,13 +21,22 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("iPede", "Index", "Home", new { /*area = ""*/ }, new { @class = "navbar-brand" })
+
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Cardápio", "Index", "Products")</li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("Index", "Cart")" style="padding:10px"><i class="fa fa-shopping-cart fa-2x"></i></a>
+                    </li>
+                </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>
+
+
         </div>
     </div>
     <div class="container body-content">
