@@ -1,0 +1,30 @@
+﻿@model IEnumerable<iPede.Site.Models.Entities.Order>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Pedidos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Name)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |*@
+            @Html.ActionLink("Detalhes", "Details", new { id=item.OrderId }) @*|
+    @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })*@
+        </td>
+    </tr>
+}
+
+</table>
