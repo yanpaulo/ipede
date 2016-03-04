@@ -1,5 +1,6 @@
 namespace iPede.Site.Migrations
 {
+    using Models.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -26,6 +27,11 @@ namespace iPede.Site.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            context.OrderStatuses.AddOrUpdate(
+              p => p.Name,
+              new OrderStatus { Name = "Realizado" }
+
+            );
         }
     }
 }
