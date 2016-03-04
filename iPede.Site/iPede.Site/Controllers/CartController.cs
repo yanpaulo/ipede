@@ -2,6 +2,7 @@
 using iPede.Site.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Mail;
@@ -58,23 +59,21 @@ namespace iPede.Site.Controllers
             ShoppingCartViewModel cart = GetCart();
             if (ModelState.IsValid)
             {
-                PaymentRequest payment = new PaymentRequest();
 
-                foreach (var cartItem in cart.Items)
-                {
-                    payment.Items.Add(new Item(
-                        cartItem.Product.ProductId.ToString(),
-                        cartItem.Product.Name,
-                        cartItem.Ammount,
-                        cartItem.Product.Price));
-                }
+                Order order = new Order { OrderStatusId = int.Parse(ConfigurationManager.AppSettings["DefaultOrderStatusId"]) };
+
+                cart.Items.ForEach(cartItem => {
+                    order.Items.Add(
+                        new OrderItem {
+                        ProductId = cartItem.Product.ProductId,
+                        Quantity = cartItem.Ammount,
+                        Price = cartItem.Ammount * cartItem.Product.Price } );
+                });
+                db.Orders.Add(order);
+                db.SaveChanges();
 
                 CleanCart();
-                payment.RedirectUri = Request.Url;
-                AccountCredentials credentials = new AccountCredentials(
-                    "yanpaulo@hotmail.com",
-                    "F93A9C35B6D046FAAC451A92A0C38CD3");
-                return Redirect(payment.Register(credentials).ToString());
+                return RedirectToAction("Finish");
             }
 
             return View("Index", cart);

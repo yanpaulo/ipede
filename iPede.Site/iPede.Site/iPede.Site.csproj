@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201601262042345_InitialCreate.Designer.cs">
       <DependentUpon>201601262042345_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603041826434_OrderPlacement.cs" />
+    <Compile Include="Migrations\201603041826434_OrderPlacement.Designer.cs">
+      <DependentUpon>201603041826434_OrderPlacement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -198,6 +202,9 @@
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\ContactViewModel.cs" />
     <Compile Include="Models\Entities\iPedeContext.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
+    <Compile Include="Models\Entities\OrderItem.cs" />
+    <Compile Include="Models\Entities\OrderStatus.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductImage.cs" />
     <Compile Include="Models\Entities\Service.cs" />
@@ -541,6 +548,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601262042345_InitialCreate.resx">
       <DependentUpon>201601262042345_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603041826434_OrderPlacement.resx">
+      <DependentUpon>201603041826434_OrderPlacement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

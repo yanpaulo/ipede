@@ -12,6 +12,12 @@ namespace iPede.Site.Models.Entities
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
         public DbSet<Service> Services { get; set; }
 
         public DbSet<AboutUs> AboutUs { get; set; }
