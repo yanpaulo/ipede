@@ -1,6 +1,8 @@
 //Should be set before calling updateCartAddButtons()
 var cartUrl = '/Cart';
 
+//Callback for functions which updates the cart.
+//It basically correctly loads the products cart button's classes
 function updateCartCallback(data) {
     //For each cart add button on screen
     $(".cart-add-button").each(function () {
@@ -23,6 +25,7 @@ function updateCartCallback(data) {
     updateCartIcon();
 }
 
+//Loads the products cart button's classes
 function updateCart() {
     var getCartDataUrl = cartUrl + '/GetData'
     $.ajax({
@@ -33,6 +36,7 @@ function updateCart() {
     });
 }
 
+//Updates cart icon (for example, with a short products list)
 function updateCartIcon() {
     var cartIconUrl = cartUrl + '/Icon';
     $.ajax({
@@ -46,7 +50,7 @@ function updateCartIcon() {
 }
 
 jQuery(function ($) {
-
+    //Add Buy Product functionality for each button with "cart-add-button" class.
     $(".cart-add-button").click(function () {
         var addToCartUrl = cartUrl + '/Add'
         var id = $(this).data("product-id");
@@ -58,7 +62,7 @@ jQuery(function ($) {
             cache: false,
             success: updateCartCallback
         });
-        $("#site-modal").html($("#modal-loading").html());
+        $("#site-modal .modal-content").html($("#modal-loading-content").html());
         $("#site-modal").modal();
         //Pega a view de item adicionado para este produto
         $.ajax({
@@ -68,7 +72,6 @@ jQuery(function ($) {
             cache: false,
             success: function (data) {
                 $("#site-modal .modal-content").html(data);
-                
             },
             error: function (x) {
                 alert(x.responseText);
