@@ -24,6 +24,8 @@ namespace iPede.WindowsApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private iPedeService service = new iPedeService();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -31,7 +33,7 @@ namespace iPede.WindowsApp
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            ProductsControl.ItemsSource = await service.GetProducts();
         }
     }
 }

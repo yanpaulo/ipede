@@ -16,7 +16,7 @@ namespace iPede.WindowsApp.Service
         public iPedeService()
         {
             httpClient = new HttpClient();
-            serviceUri = new Uri("http://localhost:58921/api/products/");
+            serviceUri = new Uri("http://ipede.yanscorp.com/api/products");
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
@@ -38,10 +38,15 @@ namespace iPede.WindowsApp.Service
                 CategoryId = (int)o.GetNamedNumber("CategoryId"),
                 Name = o.GetNamedString("Name"),
                 ShortDescription = o.GetNamedString("ShortDescription"),
-                FullDescription = o.GetNamedString("FullDescription"),
+                FullDescription = StringFromJson(o["FullDescription"]),
                 Price = (decimal)o.GetNamedNumber("Price"),
-                CategoryName = o.GetNamedString("FullDescription")
+                CategoryName = o.GetNamedString("CategoryName")
             };
+        }
+
+        private string StringFromJson(IJsonValue value)
+        {
+            return value.ValueType == JsonValueType.String ? value.GetString() : null;
         }
     }
 }
