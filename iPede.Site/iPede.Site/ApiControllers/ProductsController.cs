@@ -9,17 +9,31 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using iPede.Site.Models.Entities;
+using iPede.Site.Models.DTOs;
+using AutoMapper;
 
 namespace iPede.Site.ApiControllers
 {
     public class ProductsController : ApiController
     {
         private iPedeContext db = new iPedeContext();
+        private MapperConfiguration config;
+        private IMapper mapper;
+
+        public ProductsController()
+        {
+            config = AutoMapperConfig.GetMapperInstance();
+            mapper = config.CreateMapper();
+        }
+
 
         // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        public IEnumerable<ProductDTO> GetProducts()
         {
-            return db.Products;
+            
+            return db.Products
+                .ToList()
+                .Select(p => MapProduct(p));
         }
 
         // GET: api/Products/5
@@ -32,8 +46,11 @@ namespace iPede.Site.ApiControllers
                 return NotFound();
             }
 
-            return Ok(product);
+            return Ok(MapProduct(product));
         }
+
+        #region Unsupported Actions
+        //At the moment, the following actions are (and maybe won't be) supported
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
@@ -101,6 +118,8 @@ namespace iPede.Site.ApiControllers
             return Ok(product);
         }
 
+        #endregion
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -113,6 +132,11 @@ namespace iPede.Site.ApiControllers
         private bool ProductExists(int id)
         {
             return db.Products.Count(e => e.ProductId == id) > 0;
+        }
+
+        private ProductDTO MapProduct(Product p)
+        {
+            return mapper.Map<Product, ProductDTO>(p);
         }
     }
 }

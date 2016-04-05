@@ -25,6 +25,7 @@ namespace iPede.Site
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Entities.iPedeContext,
                 Migrations.Configuration>());
+            AutoMapperConfig.Configure();
         }
     }
 }
