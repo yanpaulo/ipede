@@ -48,7 +48,13 @@
                         <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
                         <TextBlock Text="{Binding Price, Converter={StaticResource PriceValueConverter}}" Style="{ThemeResource SubheaderTextBlockStyle}"></TextBlock>
                         <TextBlock Text="{Binding FullDescription}" Style="{ThemeResource BodyTextBlockStyle}"></TextBlock>
-
+                        <Button x:Name="AddToCartButton" Background="{ThemeResource SystemControlForegroundAccentBrush}" Click="AddToCartButton_Click">
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{ThemeResource BodyTextBlockStyle}" FontWeight="Bold" Margin="12,4">Incluir</TextBlock>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
                     </StackPanel>
                 </ScrollViewer>
             </RelativePanel>

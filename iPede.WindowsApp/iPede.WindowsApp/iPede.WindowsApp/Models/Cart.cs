@@ -1,0 +1,37 @@
+﻿using iPede.WindowsApp.Service;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace iPede.WindowsApp.Models
+{
+    public class Cart
+    {
+        private static Cart instance = new Cart();
+        private List<CartItem> _items;
+
+        private Cart()
+        {
+
+        }
+
+        public static Cart GetInstance()
+        {
+            return instance;
+        }
+
+        public CartItem[] Items
+        {
+            get { return _items.ToArray(); }
+        }
+
+        public void AddItem(Product p)
+        {
+            _items.Add(new CartItem { Product = p, Quantity = 1 });
+        }
+
+
+    }
+}

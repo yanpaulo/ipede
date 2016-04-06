@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -50,6 +51,9 @@ namespace iPede.WindowsApp
             this.Frame.Navigate(typeof(CartPage));
         }
 
-
+        private async void AddToCartButton_Click(object sender, RoutedEventArgs e)
+        {
+            await new MessageDialog("Não dá pra comprar ainda, panaca!").ShowAsync();
+        }
     }
 }
