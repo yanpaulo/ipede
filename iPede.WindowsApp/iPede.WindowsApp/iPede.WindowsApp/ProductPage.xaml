@@ -16,9 +16,7 @@
 
         <!--ScrollViewer for small screens. Disabled for big screens-->
         <ScrollViewer  x:Name="MainScrollViewer" Grid.Row="1"
-                      HorizontalScrollMode="Disabled"
                       VerticalScrollMode="Disabled"
-                      HorizontalScrollBarVisibility="Hidden"
                       VerticalScrollBarVisibility="Hidden"
                       >
             <ScrollViewer.Background>
@@ -26,11 +24,11 @@
             </ScrollViewer.Background>
             <RelativePanel>
 
-                <Border x:Name="ImageBorder" Margin="10" Width="400" BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2"
+                <Border x:Name="ImageBorder" Margin="8" Padding="4" Width="400" BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2"
                             RelativePanel.AlignLeftWithPanel="True"
                             RelativePanel.AlignTopWithPanel="True"
                             RelativePanel.AlignBottomWithPanel="True">
-                    <Image Source="{Binding MainImageUrl}" VerticalAlignment="Top" Height="400" Width="400"></Image>
+                    <Image Source="{Binding MainImageUrl}" VerticalAlignment="Top"></Image>
                 </Border>
                 <ScrollViewer x:Name="SubScrollViewer"
                     RelativePanel.RightOf="ImageBorder"
@@ -40,10 +38,52 @@
                     <StackPanel Padding="10">
                         <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
                         <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding Price}" Style="{ThemeResource SubheaderTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding FullDescription}" Style="{ThemeResource BodyTextBlockStyle}"></TextBlock>
 
                     </StackPanel>
                 </ScrollViewer>
             </RelativePanel>
         </ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowSizeStates">
+                <!-- First set of VisualStates are simple responsive states based on window size. AdaptiveTrigger is a built-in trigger that XAML knows to automatically trigger based on window size -->
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- Trigger below indicates that this VisualState is to be applied when the current window width is >= 720 effective pixels -->
+                        <AdaptiveTrigger MinWindowWidth="640" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!-- Trigger below indicates that this VisualState is to be applied when current window width is >=0 and <720 effective pixels -->
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Simplified Setter statements are used to move elements around to optimize for lesser available space -->
+                        <Setter Target="ImageBorder.(RelativePanel.AlignBottomWithPanel)" Value="False" />
+                        <Setter Target="ImageBorder.(RelativePanel.AlignRightWithPanel)" Value="True" />
+                        <Setter Target="ImageBorder.(RelativePanel.AlignRightWithPanel)" Value="True" />
+                        
+                        
+                        <Setter Target="SubScrollViewer.(RelativePanel.AlignTopWithPanel)" Value="False" />
+                        <Setter Target="SubScrollViewer.(RelativePanel.AlignLeftWithPanel)" Value="True" />
+                        <Setter Target="SubScrollViewer.(RelativePanel.RightOf)" Value="" />
+                        <Setter Target="SubScrollViewer.(RelativePanel.Below)" Value="ImageBorder" />
+                        <Setter Target="SubScrollViewer.VerticalScrollMode" Value="Disabled" />
+                        <Setter Target="SubScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+                        
+                        <Setter Target="MainScrollViewer.VerticalScrollMode" Value="Enabled" />
+                        <Setter Target="MainScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
+                        <!--<ScrollViewer  x:Name="MainScrollViewer" Grid.Row="1"
+                      HorizontalScrollMode="Disabled"
+                      VerticalScrollMode="Disabled"
+                      HorizontalScrollBarVisibility="Hidden"
+                      VerticalScrollBarVisibility="Hidden"-->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
+
 </Page>
