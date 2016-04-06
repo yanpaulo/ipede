@@ -136,7 +136,9 @@ namespace iPede.Site.ApiControllers
 
         private ProductDTO MapProduct(Product p)
         {
-            return mapper.Map<Product, ProductDTO>(p);
+            ProductDTO ret = mapper.Map<Product, ProductDTO>(p);
+            ret.MainImageUrl = Url.Content(ret.MainImageUrl);
+            return ret;
         }
     }
 }

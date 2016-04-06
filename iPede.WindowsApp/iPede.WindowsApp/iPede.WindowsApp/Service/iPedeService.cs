@@ -40,7 +40,8 @@ namespace iPede.WindowsApp.Service
                 ShortDescription = o.GetNamedString("ShortDescription"),
                 FullDescription = StringFromJson(o["FullDescription"]),
                 Price = (decimal)o.GetNamedNumber("Price"),
-                CategoryName = o.GetNamedString("CategoryName")
+                CategoryName = o.GetNamedString("CategoryName"),
+                MainImageUrl = StringFromJson(o["MainImageUrl"])
             };
         }
 

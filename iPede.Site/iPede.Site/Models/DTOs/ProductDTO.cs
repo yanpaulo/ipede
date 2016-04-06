@@ -22,5 +22,7 @@ namespace iPede.Site.Models.DTOs
         public decimal Price { get; set; }
 
         public string CategoryName { get; set; }
+
+        public string MainImageUrl { get; set; }
     }
 }

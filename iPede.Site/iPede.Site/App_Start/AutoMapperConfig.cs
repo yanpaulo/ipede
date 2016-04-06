@@ -16,7 +16,8 @@ namespace iPede.Site
         {
             mapper = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Product, ProductDTO>();
+                cfg.CreateMap<Product, ProductDTO>()
+                .ForMember(dest => dest.MainImageUrl, opt => opt.MapFrom(source => source.MainOrNoImage.Url));
             });
         }
 
