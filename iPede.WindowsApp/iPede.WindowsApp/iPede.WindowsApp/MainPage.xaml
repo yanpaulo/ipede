@@ -22,7 +22,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}">
+                    <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}" Click="FoodItemButton_Click">
                         <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="4" CornerRadius="2" Padding="4">
                             <StackPanel.Background>
                                 <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.2"></ImageBrush>

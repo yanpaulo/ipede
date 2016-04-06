@@ -35,5 +35,11 @@ namespace iPede.WindowsApp
         {
             ProductsControl.ItemsSource = await service.GetProducts();
         }
+
+        private void FoodItemButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button source = (Button)sender;
+            this.Frame.Navigate(typeof(ProductPage), source.DataContext);
+        }
     }
 }

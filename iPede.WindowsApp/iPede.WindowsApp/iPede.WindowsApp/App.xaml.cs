@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -77,6 +78,11 @@ namespace iPede.WindowsApp
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
+
+            // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
+            // that needs to handle back or if you want to do page-specific logic before deciding to navigate back on those pages.
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -89,6 +95,28 @@ namespace iPede.WindowsApp
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+        }
+
+        /// <summary>
+        /// Invoked when a user issues a global back on the device.
+        /// If the app has no in-app back stack left for the current view/frame the user may be navigated away
+        /// back to the previous app in the system's app back stack or to the start screen.
+        /// In windowed mode on desktop there is no system app back stack and the user will stay in the app even when the in-app back stack is depleted.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame == null)
+                return;
+
+            // If we can go back and the event has not already been handled, do so.
+            if (rootFrame.CanGoBack && e.Handled == false)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
         }
 
         /// <summary>
