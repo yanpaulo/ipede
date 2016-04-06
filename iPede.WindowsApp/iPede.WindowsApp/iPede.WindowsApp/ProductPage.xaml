@@ -5,9 +5,13 @@
     xmlns:local="using:iPede.WindowsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:iPede.WindowsApp.Converters"
     mc:Ignorable="d">
-
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <converters:PriceValueConverter x:Key="PriceValueConverter"></converters:PriceValueConverter>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -38,7 +42,7 @@
                     <StackPanel Padding="10">
                         <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
                         <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
-                        <TextBlock Text="{Binding Price}" Style="{ThemeResource SubheaderTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding Price, Converter={StaticResource PriceValueConverter}}" Style="{ThemeResource SubheaderTextBlockStyle}"></TextBlock>
                         <TextBlock Text="{Binding FullDescription}" Style="{ThemeResource BodyTextBlockStyle}"></TextBlock>
 
                     </StackPanel>
