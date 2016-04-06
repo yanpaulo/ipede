@@ -10,21 +10,40 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Text="{Binding Name}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}"></TextBlock>
-        <ScrollViewer Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TextBlock Padding="10" Text="{Binding Name, FallbackValue='iPede'}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}"></TextBlock>
+
+        <!--ScrollViewer for small screens. Disabled for big screens-->
+        <ScrollViewer  x:Name="MainScrollViewer" Grid.Row="1"
+                      HorizontalScrollMode="Disabled"
+                      VerticalScrollMode="Disabled"
+                      HorizontalScrollBarVisibility="Hidden"
+                      VerticalScrollBarVisibility="Hidden"
+                      >
             <ScrollViewer.Background>
                 <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.1"></ImageBrush>
             </ScrollViewer.Background>
-            
-            <StackPanel>
-                <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
-                <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
-                <Border BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2">
-                    <Image Source="{Binding MainImageUrl}" Height="400" Width="400"></Image>
+            <RelativePanel>
+
+                <Border x:Name="ImageBorder" Margin="10" Width="400" BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignTopWithPanel="True"
+                            RelativePanel.AlignBottomWithPanel="True">
+                    <Image Source="{Binding MainImageUrl}" VerticalAlignment="Top" Height="400" Width="400"></Image>
                 </Border>
-            </StackPanel>
+                <ScrollViewer x:Name="SubScrollViewer"
+                    RelativePanel.RightOf="ImageBorder"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="True">
+                    <StackPanel Padding="10">
+                        <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
+                        <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </RelativePanel>
         </ScrollViewer>
     </Grid>
 </Page>
