@@ -45,6 +45,11 @@ namespace iPede.WindowsApp
             base.OnNavigatedTo(e);
         }
 
-        
+        private void PedidoAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CartPage));
+        }
+
+
     }
 }
