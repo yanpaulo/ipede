@@ -15,19 +15,21 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
         <ItemsControl Grid.Row="1"  x:Name="ProductsControl">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
                     <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                    <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="8" CornerRadius="8" Padding="8">
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource FoodItemButton}">
+                        <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="8" CornerRadius="8" Padding="8">
                             <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
                             <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
                         </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>
