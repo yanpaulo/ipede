@@ -1,4 +1,5 @@
-﻿using iPede.WindowsApp.Service;
+﻿using iPede.WindowsApp.Models;
+using iPede.WindowsApp.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,9 +52,13 @@ namespace iPede.WindowsApp
             this.Frame.Navigate(typeof(CartPage));
         }
 
-        private async void AddToCartButton_Click(object sender, RoutedEventArgs e)
+        private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            await new MessageDialog("Não dá pra comprar ainda, panaca!").ShowAsync();
+            Cart cart = Cart.GetInstance();
+            Product p = (Product)this.DataContext;
+            cart.AddItem(p);
+            AddToCartButton.Content = "No Pedido";
+            AddToCartButton.IsEnabled = false;
         }
     }
 }

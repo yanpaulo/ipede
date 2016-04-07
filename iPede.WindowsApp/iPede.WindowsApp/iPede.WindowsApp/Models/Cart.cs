@@ -14,7 +14,7 @@ namespace iPede.WindowsApp.Models
 
         private Cart()
         {
-
+            _items = new List<CartItem>();
         }
 
         public static Cart GetInstance()
@@ -29,7 +29,15 @@ namespace iPede.WindowsApp.Models
 
         public void AddItem(Product p)
         {
-            _items.Add(new CartItem { Product = p, Quantity = 1 });
+            var item = _items.SingleOrDefault(_p => _p.Product.ProductId == _p.Product.ProductId);
+            if (item != null)
+            {
+                item.Quantity++;
+            }
+            else
+            {
+                _items.Add(new CartItem { Product = p, Quantity = 1 }); 
+            }
         }
 
 
