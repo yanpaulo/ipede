@@ -13,8 +13,29 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Pedido" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
-        <StackPanel Grid.Row="1">
-            <TextBlock Style="{ThemeResource BaseTextBlockStyle}">Você ainda não adicionou itens ao carrinho, ow panaca!</TextBlock>
-        </StackPanel>
+        <ListView Grid.Row="1" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Product.MainImageUrl}" Width="80" Height="80" Margin="8"></Image>
+                        <StackPanel Orientation="Vertical" Margin="4">
+                            <TextBlock Text="{Binding Product.Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
+                            <TextBlock Text="{Binding Product.ShortDescription}" Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Quantidade: " FontWeight="Bold" Margin="0,4,4,0"></TextBlock>
+                                <TextBlock Text="{Binding Quantity}" Margin="0,4"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="AcceptAppBarButton" Icon="Accept" Label="Fechar Pedido" Click="AcceptAppBarButton_Click"></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

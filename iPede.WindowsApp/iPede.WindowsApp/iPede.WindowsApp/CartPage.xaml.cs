@@ -1,10 +1,12 @@
-﻿using System;
+﻿using iPede.WindowsApp.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,7 +26,13 @@ namespace iPede.WindowsApp
     {
         public CartPage()
         {
+            this.DataContext = Cart.GetInstance().Items;
             this.InitializeComponent();
+        }
+
+        private async void AcceptAppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            await new MessageDialog("Dá pra comprar n, man").ShowAsync();
         }
     }
 }

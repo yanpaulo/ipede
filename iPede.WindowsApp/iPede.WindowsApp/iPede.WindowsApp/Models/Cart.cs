@@ -29,7 +29,7 @@ namespace iPede.WindowsApp.Models
 
         public void AddItem(Product p)
         {
-            var item = _items.SingleOrDefault(_p => _p.Product.ProductId == _p.Product.ProductId);
+            var item = _items.SingleOrDefault(_p => _p.Product.ProductId == p.ProductId);
             if (item != null)
             {
                 item.Quantity++;
