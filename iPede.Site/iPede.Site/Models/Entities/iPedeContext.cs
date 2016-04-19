@@ -26,6 +26,8 @@ namespace iPede.Site.Models.Entities
 
         public DbSet<ProductImage> ProductImages { get; set; }
 
+        public virtual DbSet<SuggestedProduct> SuggestedProducts { get; set; }
+
         public iPedeContext()
             : base("DefaultConnection")
         {

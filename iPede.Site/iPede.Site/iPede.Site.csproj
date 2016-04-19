@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201603041826434_OrderPlacement.Designer.cs">
       <DependentUpon>201603041826434_OrderPlacement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604191702191_Create_SuggestedProduct.cs" />
+    <Compile Include="Migrations\201604191702191_Create_SuggestedProduct.Designer.cs">
+      <DependentUpon>201604191702191_Create_SuggestedProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -230,6 +234,7 @@
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\ProductImage.cs" />
     <Compile Include="Models\Entities\Service.cs" />
+    <Compile Include="Models\Entities\SuggestedProduct.cs" />
     <Compile Include="Models\HomePageViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MenuItem.cs" />
@@ -580,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603041826434_OrderPlacement.resx">
       <DependentUpon>201603041826434_OrderPlacement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604191702191_Create_SuggestedProduct.resx">
+      <DependentUpon>201604191702191_Create_SuggestedProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
