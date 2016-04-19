@@ -1,0 +1,12 @@
+﻿@model IEnumerable<iPede.Site.Models.Entities.SuggestedProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div id="admin-suggested">
+    <div id="list">@Html.Action("ChildList")</div>
+
+    <div id="available">@Html.Action("ChildAvailableList")</div>
+</div>

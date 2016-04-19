@@ -1,0 +1,30 @@
+﻿@model IEnumerable<iPede.Site.Models.Entities.SuggestedProduct>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th>
+            Imagem
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Product.MainImage.ThumbUrl)" alt="Item" class="img-responsive" style="height: 50px" />
+            </td>
+            <td>
+                <a href="javascript:void(0)">Remover</a>
+            </td>
+        </tr>
+    }
+
+</table>

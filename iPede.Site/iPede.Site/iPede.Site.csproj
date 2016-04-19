@@ -199,6 +199,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServicesController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
+    <Compile Include="Areas\Admin\Controllers\SuggestedProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -463,6 +464,13 @@
     <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\ChildList.cshtml" />
+    <Content Include="Areas\Admin\Views\SuggestedProducts\ChildAvailableList.cshtml" />
     <None Include="Properties\PublishProfiles\Filesystem.pubxml" />
     <None Include="Properties\PublishProfiles\RaveHost.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

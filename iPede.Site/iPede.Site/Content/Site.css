@@ -28,3 +28,11 @@ textarea {
 .uploaded-image div div{
     display: block;
 }
+
+#admin-suggested #list {
+    background-color: aqua;
+}
+
+#admin-suggested #available {
+    background-color: antiquewhite;
+}
