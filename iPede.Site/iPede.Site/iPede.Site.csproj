@@ -265,6 +265,7 @@
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\fwslider.css" />
     <Content Include="Content\images\1.jpg" />
+    <Content Include="Content\images\busy.gif" />
     <Content Include="Content\images\fale-conosco.jpg" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\no-image.jpg" />
@@ -420,6 +421,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="product-images\full\dummy.txt" />
     <Content Include="product-images\thumb\dummy.txt" />
+    <Content Include="Scripts\admin-suggested.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />

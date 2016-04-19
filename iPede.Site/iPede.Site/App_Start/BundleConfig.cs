@@ -83,6 +83,9 @@ namespace iPede.Site
                             "~/Scripts/respond.js",
                             "~/Scripts/fontawesome-iconpicker.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/admin-suggested").Include(
+                             "~/Scripts/admin-suggested.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/admin-css").Include(
                       "~/Content/bootstrap.css",

@@ -28,7 +28,8 @@ namespace iPede.Site.Areas.Admin.Controllers
 
         public ActionResult ChildAvailableList()
         {
-            var products = db.Products.ToList();
+            var suggested = db.SuggestedProducts.Select(s => s.Product);
+            var products = db.Products.Where(p => !suggested.Contains(p));
 
             return PartialView(products);
         }

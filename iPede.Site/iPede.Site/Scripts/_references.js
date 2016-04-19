@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="admin-suggested.js" />
 /// <reference path="ai.0.15.0-build58334.min.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="classie.js" />
