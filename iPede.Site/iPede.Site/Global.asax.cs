@@ -23,9 +23,13 @@ namespace iPede.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Entities.iPedeContext,
-                Migrations.Configuration>());
+            
             AutoMapperConfig.Configure();
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Entities.iPedeContext,
+                        Migrations.Configuration>());
+            }
         }
     }
 }
