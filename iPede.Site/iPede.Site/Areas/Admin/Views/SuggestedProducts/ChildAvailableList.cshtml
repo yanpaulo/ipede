@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            <a href="javascript:void(0)">Adicionar</a>
+            <a href="javascript:void(0)" data-item-id="@item.ProductId" class="btn btn-info add-item-button">Adicionar</a>
         </td>
     </tr>
 }

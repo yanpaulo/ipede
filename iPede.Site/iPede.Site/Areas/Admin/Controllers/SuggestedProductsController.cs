@@ -33,6 +33,23 @@ namespace iPede.Site.Areas.Admin.Controllers
             return PartialView(products);
         }
 
+        public ActionResult Add(int id)
+        {
+            Product p = db.Products.Find(id);
+            if (db.SuggestedProducts.Count(s => s.ProductId == p.ProductId) == 0)
+            {
+                SuggestedProduct suggested = new SuggestedProduct()
+                {
+                    Product = p
+                };
+                db.SuggestedProducts.Add(suggested);
+                db.SaveChanges();
+                return PartialView("ChildList", db.SuggestedProducts);
+            }
+
+            return new HttpStatusCodeResult(400);
+        }
+
         // GET: Admin/SuggestedProducts/Details/5
         public ActionResult Details(int? id)
         {
