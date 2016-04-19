@@ -22,7 +22,7 @@
                 <img src="@Url.Content(item.Product.MainImage.ThumbUrl)" alt="Item" class="img-responsive" style="height: 50px" />
             </td>
             <td>
-                <a href="javascript:void(0)" class="btn btn-info">Remover</a>
+                <a href="javascript:void(0)" data-item-id="@item.Id" class="btn btn-info remove-item-button">Remover</a>
             </td>
         </tr>
     }

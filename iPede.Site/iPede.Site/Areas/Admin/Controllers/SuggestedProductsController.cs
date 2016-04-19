@@ -28,11 +28,11 @@ namespace iPede.Site.Areas.Admin.Controllers
 
         public ActionResult ChildAvailableList()
         {
-            var suggested = db.SuggestedProducts.Select(s => s.Product);
-            var products = db.Products.Where(p => !suggested.Contains(p));
+            var products = AvailableProducts();
 
             return PartialView(products);
         }
+
 
         public ActionResult Add(int id)
         {
@@ -46,6 +46,20 @@ namespace iPede.Site.Areas.Admin.Controllers
                 db.SuggestedProducts.Add(suggested);
                 db.SaveChanges();
                 return PartialView("ChildList", db.SuggestedProducts);
+            }
+
+            return new HttpStatusCodeResult(400);
+        }
+
+        public ActionResult Remove(int id)
+        {
+            SuggestedProduct s = db.SuggestedProducts.Find(id);
+            if (s != null)
+            {
+
+                db.SuggestedProducts.Remove(s);
+                db.SaveChanges();
+                return PartialView("ChildAvailableList", AvailableProducts());
             }
 
             return new HttpStatusCodeResult(400);
@@ -148,6 +162,14 @@ namespace iPede.Site.Areas.Admin.Controllers
             db.SuggestedProducts.Remove(suggestedProduct);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        private IQueryable<Product> AvailableProducts()
+        {
+            var suggested = db.SuggestedProducts.Select(s => s.Product);
+            var products = db.Products.Where(p => !suggested.Contains(p));
+            return products;
         }
 
         protected override void Dispose(bool disposing)
