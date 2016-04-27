@@ -9,7 +9,6 @@ using System.Net.Mail;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using Uol.PagSeguro.Domain;
 
 namespace iPede.Site.Controllers
 {
