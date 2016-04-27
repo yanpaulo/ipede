@@ -216,6 +216,10 @@
     <Compile Include="Migrations\201604191702191_Create_SuggestedProduct.Designer.cs">
       <DependentUpon>201604191702191_Create_SuggestedProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604271831473_RemoveDbGargabe.cs" />
+    <Compile Include="Migrations\201604271831473_RemoveDbGargabe.Designer.cs">
+      <DependentUpon>201604271831473_RemoveDbGargabe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -565,6 +569,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604191702191_Create_SuggestedProduct.resx">
       <DependentUpon>201604191702191_Create_SuggestedProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604271831473_RemoveDbGargabe.resx">
+      <DependentUpon>201604271831473_RemoveDbGargabe.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
