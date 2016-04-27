@@ -6,6 +6,11 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/admin-suggested")
+    <script>
+        admin_suggested.add_data.action = '@Url.Action("Add")';
+        admin_suggested.remove_data.action = '@Url.Action("Remove")';
+
+    </script>
 }
 <h2>Index</h2>
 <div id="admin-suggested">
