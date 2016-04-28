@@ -24,5 +24,7 @@ namespace iPede.Site.Models.DTOs
         public string CategoryName { get; set; }
 
         public string MainImageUrl { get; set; }
+
+        public bool IsSuggested { get; set; }
     }
 }

@@ -138,6 +138,7 @@ namespace iPede.Site.ApiControllers
         {
             ProductDTO ret = mapper.Map<Product, ProductDTO>(p);
             ret.MainImageUrl = Url.Content(ret.MainImageUrl);
+            ret.IsSuggested = db.SuggestedProducts.ToList().Count(s => s.Product == p) > 0;
             return ret;
         }
     }
