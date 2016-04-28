@@ -45,13 +45,7 @@ namespace iPede.WindowsApp
                     Symbol = Symbol.List,
                     Label = "Categorias",
                     DestPage = typeof(BlankPage)
-                },
-                new NavMenuItem()
-                {
-                    Symbol = Symbol.Setting,
-                    Label = "Configurações",
-                    DestPage = typeof(BlankPage)
-                },
+                }
             });
 
         public static MainPage Current = null;
@@ -85,6 +79,8 @@ namespace iPede.WindowsApp
         {
             this.Frame.Navigate(typeof(CartPage));
         }
+
+        public NavMenuListView PageNavMenu { get { return NavMenuList; }  }
 
         #region Navigation Stuff
 
