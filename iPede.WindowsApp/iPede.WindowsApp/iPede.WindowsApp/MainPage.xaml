@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:iPede.WindowsApp"
+    xmlns:controls="using:iPede.WindowsApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -12,77 +13,124 @@
             <NavigationThemeTransition />
         </TransitionCollection>
     </Page.Transitions>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView x:Name="RootSplitView"
-                   DisplayMode="CompactInline"
-                   OpenPaneLength="256"
-                   IsTabStop="False">
-            <SplitView.Pane>
-                <Grid>
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="48" />
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>-->
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="48"></RowDefinition>
-                        <RowDefinition Height="48"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <!-- Showing a ToolTip and the Label is redundant.  We put the ToolTip on the icon.
+    <Page.Resources>
+        <DataTemplate x:Key="NavMenuItemTemplate" x:DataType="local:NavMenuItem">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!-- Showing a ToolTip and the Label is redundant.  We put the ToolTip on the icon.
                      It appears when the user hovers over the icon, but not the label which provides
                      value when the SplitView is 'Compact' while reducing the likelihood of showing
                      redundant information when the label is shown.-->
-
-                    <Button Grid.Row="1">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <FontIcon x:Name="Glyph" FontSize="16" FontFamily="Candara" Glyph="&#x03A3;" VerticalAlignment="Center" HorizontalAlignment="Center"  />
-                                <TextBlock x:Name="Text" Text="Favoritos" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
-                            </StackPanel>
-                        </Button.Content>
-
-                    </Button>
-                </Grid>
-            </SplitView.Pane>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="60,10,10,10"></TextBlock>
-                <ScrollViewer Grid.Row="1">
-                    <ItemsControl HorizontalAlignment="Center"   x:Name="ProductsControl">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}" Click="FoodItemButton_Click">
-                                    <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="4" CornerRadius="2" Padding="4">
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.2"></ImageBrush>
-                                        </StackPanel.Background>
-                                        <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
-                                        <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
-                                        <Border BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2">
-                                            <Image Source="{Binding MainImageUrl}" Height="180"></Image>
-                                        </Border>
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                <FontIcon x:Name="Glyph" FontSize="16" Glyph="{x:Bind SymbolAsChar}" VerticalAlignment="Center" HorizontalAlignment="Center" ToolTipService.ToolTip="{x:Bind Label}"/>
+                <TextBlock x:Name="Text" Grid.Column="1" Text="{x:Bind Label}" />
             </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!-- Adaptive triggers -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="RootSplitView.IsPaneOpen" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="RootSplitView.DisplayMode" Value="Overlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <!-- Top-level navigation menu + app content -->
+        <SplitView x:Name="RootSplitView"
+                   DisplayMode="Inline"
+                   OpenPaneLength="256"
+                   IsTabStop="False">
+            <SplitView.Pane>
+                
+                <!-- A custom ListView to display the items in the pane.  The automation Name is set in the ContainerContentChanging event. -->
+                <controls:NavMenuListView x:Name="NavMenuList"
+                                          TabIndex="3"
+                                          Margin="0,48,0,0"
+                                          ContainerContentChanging="NavMenuItemContainerContentChanging"
+                                          ItemContainerStyle="{StaticResource NavMenuItemContainerStyle}"
+                                          ItemTemplate="{StaticResource NavMenuItemTemplate}"
+                                          ItemInvoked="NavMenuList_ItemInvoked" />
+            </SplitView.Pane>
+
+            <!-- OnNavigatingToPage we synchronize the selected item in the nav menu with the current page.
+                 OnNavigatedToPage we move keyboard focus to the first item on the page after it's loaded and update the Back button. -->
+            <Frame x:Name="frame"
+                   Navigating="OnNavigatingToPage"
+                   Navigated="OnNavigatedToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo/>
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+                <Frame.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="60,10,10,10"></TextBlock>
+                        <ScrollViewer Grid.Row="1">
+                            <ItemsControl HorizontalAlignment="Center"   x:Name="ProductsControl">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}" Click="FoodItemButton_Click">
+                                            <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="4" CornerRadius="2" Padding="4">
+                                                <StackPanel.Background>
+                                                    <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.2"></ImageBrush>
+                                                </StackPanel.Background>
+                                                <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
+                                                <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
+                                                <Border BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2">
+                                                    <Image Source="{Binding MainImageUrl}" Height="180"></Image>
+                                                </Border>
+                                            </StackPanel>
+                                        </Button>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+                </Frame.Content>
+            </Frame>
+            
         </SplitView>
+
+        <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
         <ToggleButton x:Name="TogglePaneButton"
                       TabIndex="1"
                       Style="{StaticResource SplitViewTogglePaneButtonStyle}"
                       IsChecked="{Binding IsPaneOpen, ElementName=RootSplitView, Mode=TwoWay}"
+                      Unchecked="TogglePaneButton_Checked"
                       AutomationProperties.Name="Menu"
                       ToolTipService.ToolTip="Menu" />
+        
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
