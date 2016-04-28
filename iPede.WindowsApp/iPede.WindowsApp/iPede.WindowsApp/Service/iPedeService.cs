@@ -30,6 +30,11 @@ namespace iPede.WindowsApp.Service
                 .Select(o => FromJson(o.GetObject()));
         }
 
+        public async Task<IEnumerable<Product>> GetSuggestedProduct()
+        {
+            return (await GetProducts()).Where(p => p.IsSuggested);
+        }
+
         private Product FromJson(JsonObject o)
         {
             return new Product
@@ -41,7 +46,8 @@ namespace iPede.WindowsApp.Service
                 FullDescription = StringFromJson(o["FullDescription"]),
                 Price = (decimal)o.GetNamedNumber("Price"),
                 CategoryName = o.GetNamedString("CategoryName"),
-                MainImageUrl = StringFromJson(o["MainImageUrl"])
+                MainImageUrl = StringFromJson(o["MainImageUrl"]),
+                IsSuggested = o.GetNamedBoolean("IsSuggested")
             };
         }
 
