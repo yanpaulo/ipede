@@ -59,7 +59,7 @@
                    OpenPaneLength="256"
                    IsTabStop="False">
             <SplitView.Pane>
-                
+
                 <!-- A custom ListView to display the items in the pane.  The automation Name is set in the ContainerContentChanging event. -->
                 <controls:NavMenuListView x:Name="NavMenuList"
                                           TabIndex="3"
@@ -84,42 +84,8 @@
                         </NavigationThemeTransition>
                     </TransitionCollection>
                 </Frame.ContentTransitions>
-                <Frame.Content>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="60,10,10,10"></TextBlock>
-                        <ScrollViewer Grid.Row="1">
-                            <ItemsControl HorizontalAlignment="Center"   x:Name="ProductsControl">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <ItemsWrapGrid Orientation="Horizontal"></ItemsWrapGrid>
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}" Click="FoodItemButton_Click">
-                                            <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="4" CornerRadius="2" Padding="4">
-                                                <StackPanel.Background>
-                                                    <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.2"></ImageBrush>
-                                                </StackPanel.Background>
-                                                <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
-                                                <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
-                                                <Border BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2">
-                                                    <Image Source="{Binding MainImageUrl}" Height="180"></Image>
-                                                </Border>
-                                            </StackPanel>
-                                        </Button>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </ScrollViewer>
-                    </Grid>
-                </Frame.Content>
             </Frame>
-            
+
         </SplitView>
 
         <!-- Declared last to have it rendered above everything else, but it needs to be the first item in the tab sequence. -->
@@ -130,7 +96,7 @@
                       Unchecked="TogglePaneButton_Checked"
                       AutomationProperties.Name="Menu"
                       ToolTipService.ToolTip="Menu" />
-        
+
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>

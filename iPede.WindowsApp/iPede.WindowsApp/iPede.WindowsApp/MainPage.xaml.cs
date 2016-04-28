@@ -1,5 +1,6 @@
 ﻿using iPede.WindowsApp.Controls;
 using iPede.WindowsApp.Service;
+using iPede.WindowsApp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +28,7 @@ namespace iPede.WindowsApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private iPedeService service = new iPedeService();
+        
 
         // Declare the top level nav items
         private List<NavMenuItem> navlist = new List<NavMenuItem>(
@@ -37,7 +38,7 @@ namespace iPede.WindowsApp
                 {
                     Symbol = Symbol.Favorite,
                     Label = "Sugeridos",
-                    DestPage = typeof(BlankPage)
+                    DestPage = typeof(SuggestedProductsPage)
                 },
                 new NavMenuItem()
                 {
@@ -79,14 +80,7 @@ namespace iPede.WindowsApp
 
             NavMenuList.ItemsSource = navlist;
         }
-
-
-        private void FoodItemButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button source = (Button)sender;
-            this.Frame.Navigate(typeof(ProductPage), source.DataContext);
-        }
-
+        
         private void PedidoAppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CartPage));
@@ -229,13 +223,13 @@ namespace iPede.WindowsApp
                 AppViewBackButtonVisibility.Collapsed;
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ((Page)sender).Focus(FocusState.Programmatic);
             ((Page)sender).Loaded -= Page_Loaded;
             this.CheckTogglePaneButtonSizeChanged();
 
-            ProductsControl.ItemsSource = await service.GetSuggestedProduct();
+
         }
 
         #endregion
