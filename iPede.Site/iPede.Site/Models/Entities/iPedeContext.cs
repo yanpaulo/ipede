@@ -18,12 +18,6 @@ namespace iPede.Site.Models.Entities
 
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        public DbSet<Service> Services { get; set; }
-
-        public DbSet<AboutUs> AboutUs { get; set; }
-
-        public DbSet<BannerItem> BannerItems { get; set; }
-
         public DbSet<ProductImage> ProductImages { get; set; }
 
         public virtual DbSet<SuggestedProduct> SuggestedProducts { get; set; }
