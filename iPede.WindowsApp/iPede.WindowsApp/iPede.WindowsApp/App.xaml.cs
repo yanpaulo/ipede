@@ -78,12 +78,6 @@ namespace iPede.WindowsApp
                 // configuring the new page by passing required information as a navigation
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
-
-                MainPage mainPage = (MainPage)rootFrame.Content;
-                mainPage.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
-                mainPage.AppFrame.NavigationFailed += OnNavigationFailed;
-                mainPage.AppFrame.Navigate(typeof(SuggestedProductsPage), e.Arguments, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
-                mainPage.PageNavMenu.SelectedIndex = 0;
             }
 
             // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages

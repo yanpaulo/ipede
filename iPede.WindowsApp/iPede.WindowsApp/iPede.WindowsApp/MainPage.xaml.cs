@@ -71,15 +71,15 @@ namespace iPede.WindowsApp
                 });
 
             NavMenuList.ItemsSource = navlist;
+
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
         
         private void PedidoAppBarButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CartPage));
         }
-
-        public NavMenuListView PageNavMenu { get { return NavMenuList; }  }
-
+        
         #region Navigation Stuff
 
         public Frame AppFrame { get { return this.frame; } }
@@ -87,6 +87,15 @@ namespace iPede.WindowsApp
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            //If the page has just been opened, then load the first page (SuggestedProductsPage).
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                MainPage mainPage = this;
+                mainPage.Language = Windows.Globalization.ApplicationLanguages.Languages[0];
+                mainPage.AppFrame.NavigationFailed += OnNavigationFailed;
+                mainPage.AppFrame.Navigate(typeof(SuggestedProductsPage), null, new Windows.UI.Xaml.Media.Animation.SuppressNavigationTransitionInfo());
+                mainPage.NavMenuList.SelectedIndex = 0;
+            }
             //Register this view's BackRequested when entering this view.
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                 AppFrame.CanGoBack ?
@@ -94,6 +103,11 @@ namespace iPede.WindowsApp
                 AppViewBackButtonVisibility.Collapsed;
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
             base.OnNavigatedTo(e);
+        }
+
+        private void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
+        {
+            throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
