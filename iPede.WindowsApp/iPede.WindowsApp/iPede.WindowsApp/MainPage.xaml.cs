@@ -70,8 +70,6 @@ namespace iPede.WindowsApp
                     this.CheckTogglePaneButtonSizeChanged();
                 });
 
-            SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
-
             NavMenuList.ItemsSource = navlist;
         }
         
@@ -85,6 +83,26 @@ namespace iPede.WindowsApp
         #region Navigation Stuff
 
         public Frame AppFrame { get { return this.frame; } }
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //Register this view's BackRequested when entering this view.
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                AppFrame.CanGoBack ?
+                AppViewBackButtonVisibility.Visible :
+                AppViewBackButtonVisibility.Collapsed;
+            SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
+            base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            //Un-register this view's BackRequested when exiting this view.
+            SystemNavigationManager.GetForCurrentView().BackRequested -= SystemNavigationManager_BackRequested;
+            base.OnNavigatedFrom(e);
+        }
+
 
         /// <summary>
         /// Default keyboard focus movement for any unhandled keyboarding
@@ -148,7 +166,7 @@ namespace iPede.WindowsApp
 
         #endregion
 
-        #region Navigation
+        #region Internal Frame Navigation
 
         /// <summary>
         /// Navigate to the Page for the selected <paramref name="listViewItem"/>.
@@ -230,6 +248,7 @@ namespace iPede.WindowsApp
 
         #endregion
 
+        #region Side Navigation Pane
         public Rect TogglePaneButtonRect
         {
             get;
@@ -296,6 +315,8 @@ namespace iPede.WindowsApp
                 args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
             }
         }
+        
+        #endregion
 
         #endregion
     }

@@ -36,20 +36,7 @@ namespace iPede.WindowsApp
             Product p = (Product)e.Parameter;
             this.DataContext = p;
 
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
-            {
-                // If we have pages in our in-app backstack and have opted in to showing back, do so
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            }
-            
             base.OnNavigatedTo(e);
-        }
-
-        private void PedidoAppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(CartPage));
         }
 
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)

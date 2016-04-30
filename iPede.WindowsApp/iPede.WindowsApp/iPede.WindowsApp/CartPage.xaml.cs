@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,7 +28,19 @@ namespace iPede.WindowsApp
         public CartPage()
         {
             this.DataContext = Cart.GetInstance().Items;
+            
             this.InitializeComponent();
+        }
+
+        private void CartPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+            
+            if (rootFrame.CanGoBack)
+            {
+                // If we have pages in our in-app backstack and have opted in to showing back, do so
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            }
         }
 
         private async void AcceptAppBarButton_Click(object sender, RoutedEventArgs e)

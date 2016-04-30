@@ -73,15 +73,15 @@
                         <Setter Target="ImageBorder.(RelativePanel.AlignBottomWithPanel)" Value="False" />
                         <Setter Target="ImageBorder.(RelativePanel.AlignRightWithPanel)" Value="True" />
                         <Setter Target="ImageBorder.(RelativePanel.AlignRightWithPanel)" Value="True" />
-                        
-                        
+
+
                         <Setter Target="SubScrollViewer.(RelativePanel.AlignTopWithPanel)" Value="False" />
                         <Setter Target="SubScrollViewer.(RelativePanel.AlignLeftWithPanel)" Value="True" />
                         <Setter Target="SubScrollViewer.(RelativePanel.RightOf)" Value="" />
                         <Setter Target="SubScrollViewer.(RelativePanel.Below)" Value="ImageBorder" />
                         <Setter Target="SubScrollViewer.VerticalScrollMode" Value="Disabled" />
                         <Setter Target="SubScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
-                        
+
                         <Setter Target="MainScrollViewer.VerticalScrollMode" Value="Enabled" />
                         <Setter Target="MainScrollViewer.VerticalScrollBarVisibility" Value="Visible" />
                         <!--<ScrollViewer  x:Name="MainScrollViewer" Grid.Row="1"
@@ -94,9 +94,4 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Shop" Label="Pedido" Click="PedidoAppBarButton_Click"></AppBarButton>
-        </CommandBar>
-    </Page.BottomAppBar>
 </Page>
