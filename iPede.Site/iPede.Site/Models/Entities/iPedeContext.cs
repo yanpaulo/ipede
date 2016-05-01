@@ -8,17 +8,17 @@ namespace iPede.Site.Models.Entities
 {
     public class iPedeContext : DbContext
     {
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
 
-        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
-        public DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
 
-        public DbSet<OrderItem> OrderItems { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
 
-        public DbSet<ProductImage> ProductImages { get; set; }
+        public virtual DbSet<ProductImage> ProductImages { get; set; }
 
         public virtual DbSet<SuggestedProduct> SuggestedProducts { get; set; }
 
