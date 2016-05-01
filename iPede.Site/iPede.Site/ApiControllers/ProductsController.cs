@@ -31,7 +31,7 @@ namespace iPede.Site.ApiControllers
         public IEnumerable<CategoryDTO> GetCategorized()
         {
 
-            return db.Categories
+            return db.Categories.Where(c => c.ParentCategory == null)
                 .ToList()
                 .Select(c => mapper.Map<CategoryDTO>(c));
         }
