@@ -11,23 +11,25 @@ namespace iPede.WindowsApp.Service
     public class iPedeService
     {
         private HttpClient httpClient;
-        private Uri serviceUri;
+        private Uri productsUri,
+            categorizedProductsUri;
 
         public iPedeService()
         {
             httpClient = new HttpClient();
-            serviceUri = new Uri("http://ipede.yanscorp.com/api/products");
+            productsUri = new Uri("http://ipede.yanscorp.com/api/products");
+            categorizedProductsUri = new Uri("http://ipede.yanscorp.com/api/products/categorized");
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            HttpResponseMessage response = await httpClient.GetAsync(serviceUri).AsTask();
+            HttpResponseMessage response = await httpClient.GetAsync(productsUri).AsTask();
             var text = await response.Content.ReadAsStringAsync();
 
             JsonArray jsResponse = JsonArray.Parse(text);
             return jsResponse
                 .Where(o => o.ValueType == JsonValueType.Object)
-                .Select(o => FromJson(o.GetObject()));
+                .Select(o => ProductFromJson(o.GetObject()));
         }
 
         public async Task<IEnumerable<Product>> GetSuggestedProduct()
@@ -35,7 +37,31 @@ namespace iPede.WindowsApp.Service
             return (await GetProducts()).Where(p => p.IsSuggested);
         }
 
-        private Product FromJson(JsonObject o)
+        public async Task<IEnumerable<Category>> GetProductsCategorized()
+        {
+            HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri).AsTask();
+            var text = await response.Content.ReadAsStringAsync();
+
+            JsonArray jsResponse = JsonArray.Parse(text);
+            return jsResponse
+                .Where(o => o.ValueType == JsonValueType.Object)
+                .Select(o => CategoryFromJson(o.GetObject()));
+        }
+
+        private Category CategoryFromJson(JsonObject o)
+        {
+            return new Category
+            {
+                Id = (int)o.GetNamedNumber("CategoryId"),
+                Name = o.GetNamedString("Name"),
+                ParentCategoryId = IntFromJson(o["ParentCategoryId"]),
+                ParentCategoryName = StringFromJson(o["ParentCategoryName"]),
+                SubCategories = o.GetNamedArray("SubCategories").Select(p => CategoryFromJson(p.GetObject())),
+                Products = o.GetNamedArray("Products").Select(p => ProductFromJson(p.GetObject()))
+            };
+        }
+
+        private Product ProductFromJson(JsonObject o)
         {
             return new Product
             {
@@ -54,6 +80,11 @@ namespace iPede.WindowsApp.Service
         private string StringFromJson(IJsonValue value)
         {
             return value.ValueType == JsonValueType.String ? value.GetString() : null;
+        }
+
+        private int? IntFromJson(IJsonValue value)
+        {
+            return value.ValueType == JsonValueType.Number ? (int?)value.GetNumber() : null;
         }
     }
 }

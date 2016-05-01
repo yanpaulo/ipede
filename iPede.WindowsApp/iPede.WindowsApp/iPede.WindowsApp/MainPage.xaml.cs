@@ -44,7 +44,7 @@ namespace iPede.WindowsApp
                 {
                     Symbol = Symbol.List,
                     Label = "Categorias",
-                    DestPage = typeof(BlankPage)
+                    DestPage = typeof(CategorizedProductsPage)
                 }
             });
 
