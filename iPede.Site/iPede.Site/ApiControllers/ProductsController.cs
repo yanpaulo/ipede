@@ -14,6 +14,7 @@ using AutoMapper;
 
 namespace iPede.Site.ApiControllers
 {
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {
         private iPedeContext db = new iPedeContext();
@@ -26,6 +27,14 @@ namespace iPede.Site.ApiControllers
             mapper = config.CreateMapper();
         }
 
+        [Route("categorized")]
+        public IEnumerable<CategoryDTO> GetCategoriesWithProducts()
+        {
+
+            return db.Categories
+                .ToList()
+                .Select(c => mapper.Map<CategoryDTO>(c));
+        }
 
         // GET: api/Products
         public IEnumerable<ProductDTO> GetProducts()
