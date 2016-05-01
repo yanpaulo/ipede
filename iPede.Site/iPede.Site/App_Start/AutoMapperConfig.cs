@@ -18,6 +18,8 @@ namespace iPede.Site
             {
                 cfg.CreateMap<Product, ProductDTO>()
                 .ForMember(dest => dest.MainImageUrl, opt => opt.MapFrom(source => source.MainOrNoImage.Url));
+
+                cfg.CreateMap<Category, CategoryDTO>();
             });
         }
 
