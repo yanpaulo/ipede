@@ -28,7 +28,7 @@ namespace iPede.Site.ApiControllers
         }
 
         [Route("categorized")]
-        public IEnumerable<CategoryDTO> GetCategoriesWithProducts()
+        public IEnumerable<CategoryDTO> GetCategorized()
         {
 
             return db.Categories
