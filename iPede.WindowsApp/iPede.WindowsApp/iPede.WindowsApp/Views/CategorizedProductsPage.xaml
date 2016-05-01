@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Loaded="Page_Loaded">
     <Page.Resources>
-        <CollectionViewSource x:Name="cvs" IsSourceGrouped="true"/>
+        <CollectionViewSource x:Name="cvs" IsSourceGrouped="true" ItemsPath="SubCategories"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <SemanticZoom  x:Name="semanticZoom">
@@ -28,7 +28,15 @@
                             <TextBlock Text="{Binding Name}"></TextBlock>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                    
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
                 </ListView>
                 
             </SemanticZoom.ZoomedInView>
