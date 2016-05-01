@@ -30,10 +30,16 @@ namespace iPede.WindowsApp.Views
             this.InitializeComponent();
         }
 
+        public List<Category> Categories { get; set; }
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var categories = await service.GetProductsCategorized();
-            this.DataContext = categories;
+            cvs.Source = categories.ToList();
+            (semanticZoom.ZoomedOutView as ListViewBase).ItemsSource = cvs.View.CollectionGroups;
+            zoomedInListView.ItemsSource = cvs.View;
+            semanticZoom.IsZoomedInViewActive = false;
+            semanticZoom.IsZoomOutButtonEnabled = true;
         }
     }
 }

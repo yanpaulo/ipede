@@ -7,14 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
-
+    <Page.Resources>
+        <CollectionViewSource x:Name="cvs" IsSourceGrouped="true"/>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView ItemsSource="{Binding}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"></TextBlock>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <SemanticZoom  x:Name="semanticZoom">
+            <SemanticZoom.ZoomedOutView>
+                <ListView SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Group.Name}"></TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </SemanticZoom.ZoomedOutView>
+            <SemanticZoom.ZoomedInView>
+                <ListView x:Name="zoomedInListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                </ListView>
+                
+            </SemanticZoom.ZoomedInView>
+        </SemanticZoom>
+        
     </Grid>
 </Page>
