@@ -33,7 +33,7 @@ namespace iPede.Site.ApiControllers
 
             return db.Categories.Where(c => c.ParentCategory == null)
                 .ToList()
-                .Select(c => mapper.Map<CategoryDTO>(c));
+                .Select(c => MapCategory(c));
         }
 
         // GET: api/Products
@@ -141,6 +141,19 @@ namespace iPede.Site.ApiControllers
         private bool ProductExists(int id)
         {
             return db.Products.Count(e => e.ProductId == id) > 0;
+        }
+
+        private CategoryDTO MapCategory(Category c)
+        {
+            CategoryDTO ret = mapper.Map<Category, CategoryDTO>(c);
+            foreach (var sub in ret.SubCategories)
+            {
+                foreach (var p in sub.Products)
+                {
+                    p.MainImageUrl = Url.Content(p.MainImageUrl);
+                }
+            }
+            return ret;
         }
 
         private ProductDTO MapProduct(Product p)
