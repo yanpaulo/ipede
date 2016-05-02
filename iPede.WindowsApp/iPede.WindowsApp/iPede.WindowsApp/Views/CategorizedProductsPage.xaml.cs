@@ -38,8 +38,6 @@ namespace iPede.WindowsApp.Views
             cvs.Source = categories.ToList();
             (semanticZoom.ZoomedOutView as ListViewBase).ItemsSource = cvs.View.CollectionGroups;
             zoomedInListView.ItemsSource = cvs.View;
-            semanticZoom.IsZoomedInViewActive = false;
-            semanticZoom.IsZoomOutButtonEnabled = true;
         }
     }
 }

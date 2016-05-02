@@ -88,6 +88,7 @@
             </Style>
             <!-- Style for Windows.UI.Xaml.Controls.ListViewItem -->
             <Style TargetType="ListViewItem" x:Key="ListViewItemNoHighlight">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListViewItem">

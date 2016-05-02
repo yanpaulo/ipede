@@ -11,7 +11,7 @@
         <CollectionViewSource x:Name="cvs" IsSourceGrouped="true" ItemsPath="SubCategories"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SemanticZoom  x:Name="semanticZoom">
+        <SemanticZoom  x:Name="semanticZoom" IsZoomedInViewActive="False" IsZoomOutButtonEnabled="True">
             <SemanticZoom.ZoomedOutView>
                 <ListView SelectionMode="None">
                     <ListView.ItemTemplate>
@@ -34,7 +34,7 @@
                     </ListView.GroupStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding Products}">
+                            <ListView ItemsSource="{Binding Products}" SelectionMode="None">
                                 <ListView.HeaderTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundListMediumBrush}"></TextBlock>
