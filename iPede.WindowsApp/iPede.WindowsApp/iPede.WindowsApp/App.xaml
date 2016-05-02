@@ -86,8 +86,47 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!-- Style for Windows.UI.Xaml.Controls.ListViewItem -->
+            <Style TargetType="ListViewItem" x:Key="ListViewItemNoHighlight">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListViewItem">
+                            <Grid x:Name="ContentBorder"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="PointerOver"/>
+
+                                        <VisualState x:Name="Pressed"/>
+
+                                        <VisualState x:Name="Selected"/>
+
+                                        <VisualState x:Name="PointerOverSelected"/>
+
+
+                                        <VisualState x:Name="PressedSelected"/>
+
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <ContentPresenter x:Name="ContentPresenter"
+                            ContentTransitions="{TemplateBinding ContentTransitions}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Content="{TemplateBinding Content}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
         </ResourceDictionary>
-        
+
     </Application.Resources>
 </Application>
     

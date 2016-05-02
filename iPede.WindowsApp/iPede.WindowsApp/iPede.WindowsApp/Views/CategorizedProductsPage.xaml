@@ -16,31 +16,46 @@
                 <ListView SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Group.Name}"></TextBlock>
+                            <TextBlock Text="{Binding Group.Name}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}"></TextBlock>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </SemanticZoom.ZoomedOutView>
             <SemanticZoom.ZoomedInView>
-                <ListView x:Name="zoomedInListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
+                <ListView x:Name="zoomedInListView" ItemContainerStyle="{StaticResource ListViewItemNoHighlight}">
                     <ListView.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Path=Name}"></TextBlock>
+                                    <TextBlock Text="{Binding Path=Name}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}"></TextBlock>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
                         </GroupStyle>
                     </ListView.GroupStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ListView ItemsSource="{Binding Products}">
+                                <ListView.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundListMediumBrush}"></TextBlock>
+                                    </DataTemplate>
+                                </ListView.HeaderTemplate>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{Binding MainImageUrl}" Height="60" Width="60"></Image>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding Name}" Style="{ThemeResource BaseTextBlockStyle}"></TextBlock>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
-                
+
             </SemanticZoom.ZoomedInView>
         </SemanticZoom>
-        
+
     </Grid>
 </Page>
