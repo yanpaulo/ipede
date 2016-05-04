@@ -34,10 +34,12 @@ namespace iPede.WindowsApp.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            progressRing.IsActive = true;
             var categories = await service.GetProductsCategorized();
             cvs.Source = categories.ToList();
             (semanticZoom.ZoomedOutView as ListViewBase).ItemsSource = cvs.View.CollectionGroups;
             zoomedInListView.ItemsSource = cvs.View;
+            progressRing.IsActive = false;
         }
     }
 }
