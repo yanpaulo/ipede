@@ -150,7 +150,7 @@ namespace iPede.Site.ApiControllers
             {
                 foreach (var p in sub.Products)
                 {
-                    p.MainImageUrl = Url.Content(p.MainImageUrl);
+                    SetupProductDTO(p);
                 }
             }
             return ret;
