@@ -32,7 +32,7 @@ namespace iPede.WindowsApp.Views
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ProductsControl.ItemsSource = await service.GetSuggestedProduct();
+            ProductsControl.ItemsSource = await service.GetSuggestedProducts();
         }
 
         private void FoodItemButton_Click(object sender, RoutedEventArgs e)

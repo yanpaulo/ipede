@@ -13,6 +13,8 @@ namespace iPede.WindowsApp.Service
         private HttpClient httpClient;
         private Uri productsUri,
             categorizedProductsUri;
+        private static IEnumerable<Product> _products;
+        private static IEnumerable<Category> _categoriesWithProducts;
 
         public iPedeService()
         {
@@ -23,6 +25,23 @@ namespace iPede.WindowsApp.Service
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
+            _products = _products ?? await LoadProducts();
+            return _products;
+        }
+
+        public async Task<IEnumerable<Product>> GetSuggestedProducts()
+        {
+            return (await GetProducts()).Where(p => p.IsSuggested);
+        }
+
+        public async Task<IEnumerable<Category>> GetProductsCategorized()
+        {
+            _categoriesWithProducts = _categoriesWithProducts ?? await LoadProductsCategorized();
+            return _categoriesWithProducts;
+        }
+        
+        private async Task<IEnumerable<Product>> LoadProducts()
+        {
             HttpResponseMessage response = await httpClient.GetAsync(productsUri).AsTask();
             var text = await response.Content.ReadAsStringAsync();
 
@@ -32,12 +51,7 @@ namespace iPede.WindowsApp.Service
                 .Select(o => ProductFromJson(o.GetObject()));
         }
 
-        public async Task<IEnumerable<Product>> GetSuggestedProduct()
-        {
-            return (await GetProducts()).Where(p => p.IsSuggested);
-        }
-
-        public async Task<IEnumerable<Category>> GetProductsCategorized()
+        private async Task<IEnumerable<Category>> LoadProductsCategorized()
         {
             HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri).AsTask();
             var text = await response.Content.ReadAsStringAsync();
