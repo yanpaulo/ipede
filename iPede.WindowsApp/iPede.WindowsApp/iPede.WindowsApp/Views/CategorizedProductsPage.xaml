@@ -44,7 +44,7 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding MainImageUrl}" Height="60" Width="60"></Image>
+                                            <Image Source="{Binding MainImageThumbUrl}" Height="60" Width="60"></Image>
                                             <TextBlock VerticalAlignment="Center" Text="{Binding Name}" Style="{ThemeResource BaseTextBlockStyle}"></TextBlock>
                                         </StackPanel>
                                     </DataTemplate>

@@ -87,6 +87,7 @@ namespace iPede.WindowsApp.Service
                 Price = (decimal)o.GetNamedNumber("Price"),
                 CategoryName = o.GetNamedString("CategoryName"),
                 MainImageUrl = StringFromJson(o["MainImageUrl"]),
+                MainImageThumbUrl = StringFromJson(o["MainImageThumbUrl"]),
                 IsSuggested = o.GetNamedBoolean("IsSuggested")
             };
         }

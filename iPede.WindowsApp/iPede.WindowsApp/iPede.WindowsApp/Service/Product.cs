@@ -27,6 +27,9 @@ namespace iPede.WindowsApp.Service
 
         public string MainImageUrl { get; set; }
 
+        public string MainImageThumbUrl { get; set; }
+
         public bool IsSuggested { get; set; }
+        
     }
 }

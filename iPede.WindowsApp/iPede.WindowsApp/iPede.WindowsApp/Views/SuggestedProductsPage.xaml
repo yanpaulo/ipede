@@ -27,12 +27,12 @@
                             <Button x:Name="FoorItemButton" Style="{StaticResource FoodItemButton}" Click="FoodItemButton_Click">
                                 <StackPanel Orientation="Vertical" Width="260" Height="260" Margin="4" BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}" BorderThickness="4" CornerRadius="2" Padding="4">
                                     <StackPanel.Background>
-                                        <ImageBrush ImageSource="{Binding MainImageUrl}" Opacity="0.2"></ImageBrush>
+                                        <ImageBrush ImageSource="{Binding MainImageThumbUrl}" Opacity="0.2"></ImageBrush>
                                     </StackPanel.Background>
                                     <TextBlock Text="{Binding Name}" Style="{ThemeResource TitleTextBlockStyle}"></TextBlock>
                                     <TextBlock Text="{Binding ShortDescription}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
                                     <Border BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" BorderThickness="2">
-                                        <Image Source="{Binding MainImageUrl}" Height="180"></Image>
+                                        <Image Source="{Binding MainImageThumbUrl}" Height="180"></Image>
                                     </Border>
                                 </StackPanel>
                             </Button>
