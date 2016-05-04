@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
     Loaded="Page_Loaded">
     <Page.Resources>
         <CollectionViewSource x:Name="cvs" IsSourceGrouped="true" ItemsPath="SubCategories"/>
@@ -35,7 +36,7 @@
                     </ListView.GroupStyle>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ListView ItemsSource="{Binding Products}" SelectionMode="None">
+                            <ListView ItemsSource="{Binding Products}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
                                 <ListView.HeaderTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemControlForegroundListMediumBrush}"></TextBlock>
