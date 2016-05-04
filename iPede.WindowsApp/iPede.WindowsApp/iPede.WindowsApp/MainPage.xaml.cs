@@ -69,7 +69,6 @@ namespace iPede.WindowsApp
                     // DisplayMode changes.
                     this.CheckTogglePaneButtonSizeChanged();
                 });
-
             NavMenuList.ItemsSource = navlist;
 
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
