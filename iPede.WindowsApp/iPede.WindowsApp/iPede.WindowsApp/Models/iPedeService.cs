@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Web.Http;
-using iPede.WindowsApp.Models;
 
 namespace iPede.WindowsApp.Models
 {
