@@ -42,7 +42,13 @@ namespace iPede.WindowsApp.Service
                 .OrderBy(c => c.Name)
                 .Select(c =>
                 {
-                    c.SubCategories = c.SubCategories
+                    var subList = c.SubCategories.ToList();
+                    //Adds a new nameless Category for products outside of sub-categories.
+                    if (c.Products.Count() > 0)
+                    {
+                        subList.Add(new Category { Name = "", Products = c.Products }); 
+                    }
+                    c.SubCategories = subList
                     .OrderBy(sub => sub.Name)
                     .Select(sub =>
                     {
@@ -54,7 +60,7 @@ namespace iPede.WindowsApp.Service
                 });
             return result;
         }
-        
+
         private async Task<IEnumerable<Product>> LoadProducts()
         {
             HttpResponseMessage response = await httpClient.GetAsync(productsUri).AsTask();
