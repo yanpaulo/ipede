@@ -153,6 +153,10 @@ namespace iPede.Site.ApiControllers
                     SetupProductDTO(p);
                 }
             }
+            foreach (var p in ret.Products)
+            {
+                SetupProductDTO(p);
+            }
             return ret;
         }
 
