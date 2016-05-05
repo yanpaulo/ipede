@@ -37,7 +37,22 @@ namespace iPede.WindowsApp.Service
         public async Task<IEnumerable<Category>> GetProductsCategorized()
         {
             _categoriesWithProducts = _categoriesWithProducts ?? await LoadProductsCategorized();
-            return _categoriesWithProducts;
+            //Ordena Categorias, sub-categorias e produtos por nome.
+            var result = _categoriesWithProducts
+                .OrderBy(c => c.Name)
+                .Select(c =>
+                {
+                    c.SubCategories = c.SubCategories
+                    .OrderBy(sub => sub.Name)
+                    .Select(sub =>
+                    {
+                        sub.Products = sub.Products.OrderBy(p => p.Name);
+                        return sub;
+                    }
+                    );
+                    return c;
+                });
+            return result;
         }
         
         private async Task<IEnumerable<Product>> LoadProducts()
