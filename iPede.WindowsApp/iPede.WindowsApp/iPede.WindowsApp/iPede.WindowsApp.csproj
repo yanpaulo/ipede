@@ -98,9 +98,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BlankPage.xaml.cs">
-      <DependentUpon>BlankPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CartPage.xaml.cs">
       <DependentUpon>CartPage.xaml</DependentUpon>
     </Compile>
@@ -112,14 +109,13 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="NavMenuItem.cs" />
-    <Compile Include="ProductPage.xaml.cs">
+    <Compile Include="Views\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\Category.cs" />
-    <Compile Include="Service\iPedeService.cs" />
-    <Compile Include="Service\Product.cs" />
-    <Compile Include="Service\ProductsResult.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\iPedeService.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Views\CategorizedProductsPage.xaml.cs">
       <DependentUpon>CategorizedProductsPage.xaml</DependentUpon>
     </Compile>
@@ -148,10 +144,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BlankPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\CartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,7 +152,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ProductPage.xaml">
+    <Page Include="Views\ProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

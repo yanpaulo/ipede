@@ -1,5 +1,5 @@
 ﻿using iPede.WindowsApp.Controls;
-using iPede.WindowsApp.Service;
+using iPede.WindowsApp.Models;
 using iPede.WindowsApp.Views;
 using System;
 using System.Collections.Generic;

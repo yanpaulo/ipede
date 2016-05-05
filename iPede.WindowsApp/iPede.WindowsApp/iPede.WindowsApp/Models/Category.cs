@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iPede.WindowsApp.Service
+namespace iPede.WindowsApp.Models
 {
     public class Category
     {

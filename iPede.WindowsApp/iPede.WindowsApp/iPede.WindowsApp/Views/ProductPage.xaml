@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="iPede.WindowsApp.ProductPage"
+    x:Class="iPede.WindowsApp.Views.ProductPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:iPede.WindowsApp"
