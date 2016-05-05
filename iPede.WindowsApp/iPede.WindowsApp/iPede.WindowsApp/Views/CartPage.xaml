@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="iPede.WindowsApp.CartPage"
+    x:Class="iPede.WindowsApp.Views.CartPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:iPede.WindowsApp"
@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="Pedido" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
         <ListView Grid.Row="1" ItemsSource="{Binding}">
@@ -30,13 +31,10 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
+
         </ListView>
-        
-    </Grid>
-    <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar Grid.Row="2">
             <AppBarButton x:Name="AcceptAppBarButton" Icon="Accept" Label="Fechar Pedido" Click="AcceptAppBarButton_Click"></AppBarButton>
         </CommandBar>
-    </Page.BottomAppBar>
+    </Grid>
 </Page>

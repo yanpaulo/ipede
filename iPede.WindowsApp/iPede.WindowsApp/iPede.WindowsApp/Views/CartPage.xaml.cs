@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace iPede.WindowsApp
+namespace iPede.WindowsApp.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -28,19 +28,12 @@ namespace iPede.WindowsApp
         public CartPage()
         {
             this.DataContext = Cart.GetInstance().Items;
-            
             this.InitializeComponent();
         }
 
         private void CartPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-            
-            if (rootFrame.CanGoBack)
-            {
-                // If we have pages in our in-app backstack and have opted in to showing back, do so
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            }
+            MainPage.Current.BottomAppBar.Visibility = Visibility.Collapsed;
         }
 
         private async void AcceptAppBarButton_Click(object sender, RoutedEventArgs e)

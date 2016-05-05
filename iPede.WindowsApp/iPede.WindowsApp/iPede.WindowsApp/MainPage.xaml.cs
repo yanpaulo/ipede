@@ -28,7 +28,7 @@ namespace iPede.WindowsApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        
+
 
         // Declare the top level nav items
         private List<NavMenuItem> navlist = new List<NavMenuItem>(
@@ -74,16 +74,15 @@ namespace iPede.WindowsApp
 
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
-        
+
         private void PedidoAppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CartPage));
+            this.AppFrame.Navigate(typeof(CartPage));
         }
-        
+
         #region Navigation Stuff
 
         public Frame AppFrame { get { return this.frame; } }
-
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -233,6 +232,9 @@ namespace iPede.WindowsApp
                 NavMenuList.SetSelectedItem(container);
                 if (container != null) container.IsTabStop = true;
             }
+
+            //Make sure the BottomAppBAr is visible before changing views.
+            BottomAppBar.Visibility = Visibility.Visible;
         }
 
         private void OnNavigatedToPage(object sender, NavigationEventArgs e)
@@ -329,7 +331,7 @@ namespace iPede.WindowsApp
                 args.ItemContainer.ClearValue(AutomationProperties.NameProperty);
             }
         }
-        
+
         #endregion
 
         #endregion

@@ -96,7 +96,7 @@
 
     </Grid>
     <Page.BottomAppBar>
-        <CommandBar>
+        <CommandBar x:Name="bottomCommandBar">
             <AppBarButton x:Name="PedidoAppBarButton" Icon="Shop" Label="Pedido" Click="PedidoAppBarButton_Click"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
