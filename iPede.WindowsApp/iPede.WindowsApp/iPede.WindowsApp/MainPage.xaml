@@ -1,9 +1,9 @@
 ﻿<Page
-    x:Class="iPede.WindowsApp.MainPage"
+    x:Class="IPede.WindowsApp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:iPede.WindowsApp"
-    xmlns:controls="using:iPede.WindowsApp.Controls"
+    xmlns:local="using:IPede.WindowsApp"
+    xmlns:controls="using:IPede.WindowsApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     KeyDown="AppShell_KeyDown"

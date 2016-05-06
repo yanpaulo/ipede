@@ -1,4 +1,4 @@
-﻿using iPede.WindowsApp.Views;
+﻿using IPede.WindowsApp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace iPede.WindowsApp
+namespace IPede.WindowsApp
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

@@ -7,8 +7,8 @@
     <ProjectGuid>{EA2A23F2-83F9-4F5A-8427-B18670CD0A89}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iPede.WindowsApp</RootNamespace>
-    <AssemblyName>iPede.WindowsApp</AssemblyName>
+    <RootNamespace>IPede.WindowsApp</RootNamespace>
+    <AssemblyName>IPede.WindowsApp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>

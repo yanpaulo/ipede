@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.Data.Json;
 using Windows.Web.Http;
 
-namespace iPede.WindowsApp.Models
+namespace IPede.WindowsApp.Models
 {
     public class iPedeService
     {

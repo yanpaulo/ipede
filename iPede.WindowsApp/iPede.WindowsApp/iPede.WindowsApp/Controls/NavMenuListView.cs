@@ -13,7 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace iPede.WindowsApp.Controls
+namespace IPede.WindowsApp.Controls
 {
     /// <summary>
     /// A specialized ListView to represent the items in the navigation menu.

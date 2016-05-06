@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace iPede.WindowsApp.Converters
+namespace IPede.WindowsApp.Converters
 {
     public class PriceValueConverter : IValueConverter
     {

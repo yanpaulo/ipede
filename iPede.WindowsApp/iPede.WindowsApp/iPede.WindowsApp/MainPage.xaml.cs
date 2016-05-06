@@ -1,6 +1,6 @@
-﻿using iPede.WindowsApp.Controls;
-using iPede.WindowsApp.Models;
-using iPede.WindowsApp.Views;
+﻿using IPede.WindowsApp.Controls;
+using IPede.WindowsApp.Models;
+using IPede.WindowsApp.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +21,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
-namespace iPede.WindowsApp
+namespace IPede.WindowsApp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

@@ -1,11 +1,11 @@
-﻿using iPede.WindowsApp.Models;
+﻿using IPede.WindowsApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iPede.WindowsApp.Models
+namespace IPede.WindowsApp.Models
 {
     public class Cart
     {
