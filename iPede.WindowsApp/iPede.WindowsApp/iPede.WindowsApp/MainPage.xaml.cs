@@ -79,6 +79,8 @@ namespace iPede.WindowsApp
             this.AppFrame.Navigate(typeof(CartPage));
         }
 
+        public Grid PageGrid => pageGrid;
+
         #region Navigation Stuff
 
         public Frame AppFrame { get { return this.frame; } }
@@ -232,8 +234,15 @@ namespace iPede.WindowsApp
                 if (container != null) container.IsTabStop = true;
             }
 
-            //Make sure the BottomAppBAr is visible before changing views.
+            //Before changind views:
+            //Make sure the BottomAppBAr is visible
             BottomAppBar.Visibility = Visibility.Visible;
+            //Remove any CommandBar that was added by a sub-view.
+            foreach (var item in PageGrid.Children.OfType<CommandBar>())
+            {
+                PageGrid.Children.Remove(item);
+            }
+            
         }
 
         private void OnNavigatedToPage(object sender, NavigationEventArgs e)

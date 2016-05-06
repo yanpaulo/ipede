@@ -33,7 +33,7 @@
             </ListView.ItemTemplate>
 
         </ListView>
-        <CommandBar Grid.Row="2">
+        <CommandBar x:Name="commandBar">
             <AppBarButton x:Name="AcceptAppBarButton" Icon="Accept" Label="Fechar Pedido" Click="AcceptAppBarButton_Click"></AppBarButton>
         </CommandBar>
     </Grid>

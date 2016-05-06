@@ -33,7 +33,11 @@ namespace iPede.WindowsApp.Views
 
         private void CartPage_Loaded(object sender, RoutedEventArgs e)
         {
+            //Hides MainPage AppBar
             MainPage.Current.BottomAppBar.Visibility = Visibility.Collapsed;
+            //Put the command bar in the bottom row on MainPage.
+            Grid.SetRow(commandBar, 1);
+            MainPage.Current.PageGrid.Children.Add(commandBar);
         }
 
         private async void AcceptAppBarButton_Click(object sender, RoutedEventArgs e)
