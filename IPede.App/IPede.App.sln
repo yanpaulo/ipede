@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPede.WindowsApp", "iPede.WindowsApp\IPede.WindowsApp.csproj", "{EA2A23F2-83F9-4F5A-8427-B18670CD0A89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPede.WindowsApp", "IPede.WindowsApp\IPede.WindowsApp.csproj", "{EA2A23F2-83F9-4F5A-8427-B18670CD0A89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPede.App", "IPede.App\IPede.App.csproj", "{565B5201-1B63-4A95-9094-DFB04BB4F188}"
 EndProject
