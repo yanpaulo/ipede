@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Data.Json;
-using Windows.Web.Http;
+using System.Net.Http;
+using System.Json;
 
-namespace IPede.WindowsApp.Models
+namespace IPede.App.Models
 {
     public class iPedeService
     {
@@ -63,36 +63,36 @@ namespace IPede.WindowsApp.Models
 
         private async Task<IEnumerable<Product>> LoadProducts()
         {
-            HttpResponseMessage response = await httpClient.GetAsync(productsUri).AsTask();
+            HttpResponseMessage response = await httpClient.GetAsync(productsUri);
             var text = await response.Content.ReadAsStringAsync();
 
-            JsonArray jsResponse = JsonArray.Parse(text);
+            var jsResponse = JsonArray.Parse(text) as JsonArray;
             return jsResponse
-                .Where(o => o.ValueType == JsonValueType.Object)
-                .Select(o => ProductFromJson(o.GetObject()));
+                .Where(o => o.JsonType == JsonType.Object)
+                .Select(o => ProductFromJson(o as JsonObject));
         }
 
         private async Task<IEnumerable<Category>> LoadProductsCategorized()
         {
-            HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri).AsTask();
+            HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri);
             var text = await response.Content.ReadAsStringAsync();
 
-            JsonArray jsResponse = JsonArray.Parse(text);
+            JsonArray jsResponse = JsonArray.Parse(text) as JsonArray;
             return jsResponse
-                .Where(o => o.ValueType == JsonValueType.Object)
-                .Select(o => CategoryFromJson(o.GetObject()));
+                .Where(o => o.JsonType == JsonType.Object)
+                .Select(o => CategoryFromJson(o as JsonObject));
         }
 
         private Category CategoryFromJson(JsonObject o)
         {
             return new Category
             {
-                Id = (int)o.GetNamedNumber("CategoryId"),
-                Name = o.GetNamedString("Name"),
+                Id = o["CategoryId"],
+                Name = o["Name"],
                 ParentCategoryId = IntFromJson(o["ParentCategoryId"]),
                 ParentCategoryName = StringFromJson(o["ParentCategoryName"]),
-                SubCategories = o.GetNamedArray("SubCategories").Select(p => CategoryFromJson(p.GetObject())),
-                Products = o.GetNamedArray("Products").Select(p => ProductFromJson(p.GetObject()))
+                SubCategories = ((JsonArray)o["SubCategories"]).Select(p => CategoryFromJson(p as JsonObject)),
+                Products = ((JsonArray)o["Products"]).Select(p => ProductFromJson(p as JsonObject))
             };
         }
 
@@ -100,27 +100,27 @@ namespace IPede.WindowsApp.Models
         {
             return new Product
             {
-                ProductId = (int)o.GetNamedNumber("ProductId"),
-                CategoryId = (int)o.GetNamedNumber("CategoryId"),
-                Name = o.GetNamedString("Name"),
-                ShortDescription = o.GetNamedString("ShortDescription"),
+                ProductId = o["ProductId"],
+                CategoryId = o["CategoryId"],
+                Name = o["Name"],
+                ShortDescription = o["ShortDescription"],
                 FullDescription = StringFromJson(o["FullDescription"]),
-                Price = (decimal)o.GetNamedNumber("Price"),
-                CategoryName = o.GetNamedString("CategoryName"),
+                Price = o["Price"],
+                CategoryName = o["CategoryName"],
                 MainImageUrl = StringFromJson(o["MainImageUrl"]),
                 MainImageThumbUrl = StringFromJson(o["MainImageThumbUrl"]),
-                IsSuggested = o.GetNamedBoolean("IsSuggested")
+                IsSuggested = o["IsSuggested"]
             };
         }
 
-        private string StringFromJson(IJsonValue value)
+        private string StringFromJson(JsonValue value)
         {
-            return value.ValueType == JsonValueType.String ? value.GetString() : null;
+            return value?.JsonType == JsonType.String ? value : null;
         }
 
-        private int? IntFromJson(IJsonValue value)
+        private int? IntFromJson(JsonValue value)
         {
-            return value.ValueType == JsonValueType.Number ? (int?)value.GetNumber() : null;
+            return value?.JsonType == JsonType.Number ? (int?)value : null;
         }
     }
 }

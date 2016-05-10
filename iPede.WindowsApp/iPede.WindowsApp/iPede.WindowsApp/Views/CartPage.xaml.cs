@@ -1,4 +1,4 @@
-﻿using IPede.WindowsApp.Models;
+﻿using IPede.App.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

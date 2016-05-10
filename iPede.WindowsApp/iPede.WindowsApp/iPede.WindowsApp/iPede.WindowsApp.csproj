@@ -106,16 +106,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\CartItem.cs" />
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="Views\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\iPedeService.cs" />
-    <Compile Include="Models\Product.cs" />
     <Compile Include="Views\CategorizedProductsPage.xaml.cs">
       <DependentUpon>CategorizedProductsPage.xaml</DependentUpon>
     </Compile>
@@ -169,7 +164,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IPede.App\IPede.App.csproj">
+      <Project>{565b5201-1b63-4a95-9094-dfb04bb4f188}</Project>
+      <Name>IPede.App</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
