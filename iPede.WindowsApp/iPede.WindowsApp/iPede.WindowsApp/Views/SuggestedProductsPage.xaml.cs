@@ -22,7 +22,7 @@ namespace IPede.WindowsApp.Views
     /// </summary>
     public sealed partial class SuggestedProductsPage : Page
     {
-        private iPedeService service = new iPedeService();
+        private IPedeService service = new IPedeService();
 
         public SuggestedProductsPage()
         {

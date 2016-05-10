@@ -8,7 +8,7 @@ using System.Json;
 
 namespace IPede.App.Models
 {
-    public class iPedeService
+    public class IPedeService
     {
         private HttpClient httpClient;
         private Uri productsUri,
@@ -16,7 +16,7 @@ namespace IPede.App.Models
         private static IEnumerable<Product> _products;
         private static IEnumerable<Category> _categoriesWithProducts;
 
-        public iPedeService()
+        public IPedeService()
         {
             httpClient = new HttpClient();
             productsUri = new Uri("http://ipede.yanscorp.com/api/products");
