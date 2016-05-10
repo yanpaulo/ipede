@@ -36,6 +36,7 @@ namespace IPede.WindowsApp.Views
             //Hides MainPage AppBar
             MainPage.Current.BottomAppBar.Visibility = Visibility.Collapsed;
             //Put the command bar in the bottom row on MainPage.
+            pageGrid.Children.Remove(commandBar);
             Grid.SetRow(commandBar, 1);
             MainPage.Current.PageGrid.Children.Add(commandBar);
         }
