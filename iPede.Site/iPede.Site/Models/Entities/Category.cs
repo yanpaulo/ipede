@@ -9,7 +9,7 @@ namespace iPede.Site.Models.Entities
 {
     public class Category
     {
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
         [Display(Name="Subcategoria de ")]
         public int? ParentCategoryId { get; set; }

@@ -8,7 +8,7 @@ namespace iPede.Site.Models.DTOs
 {
     public class CategoryDTO
     {
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
         public int? ParentCategoryId { get; set; }
         

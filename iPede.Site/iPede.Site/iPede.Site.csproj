@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201604271831473_RemoveDbGargabe.Designer.cs">
       <DependentUpon>201604271831473_RemoveDbGargabe.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605132002488_Rename_Category_CategoryId.cs" />
+    <Compile Include="Migrations\201605132002488_Rename_Category_CategoryId.Designer.cs">
+      <DependentUpon>201605132002488_Rename_Category_CategoryId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -573,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604271831473_RemoveDbGargabe.resx">
       <DependentUpon>201604271831473_RemoveDbGargabe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605132002488_Rename_Category_CategoryId.resx">
+      <DependentUpon>201605132002488_Rename_Category_CategoryId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
