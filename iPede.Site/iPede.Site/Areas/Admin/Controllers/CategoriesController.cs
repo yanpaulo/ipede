@@ -39,7 +39,7 @@ namespace iPede.Site.Areas.Admin.Controllers
         // GET: Admin/Categories/Create
         public ActionResult Create()
         {
-            ViewBag.ParentCategoryId = new SelectList(db.Categories, "CategoryId", "FullName");
+            ViewBag.ParentCategoryId = new SelectList(db.Categories, "Id", "FullName");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ParentCategoryId = new SelectList(db.Categories, "CategoryId", "Name", category.ParentCategoryId);
+            ViewBag.ParentCategoryId = new SelectList(db.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -75,7 +75,7 @@ namespace iPede.Site.Areas.Admin.Controllers
             }
             var parentCategories = db.Categories.ToList();
             parentCategories.Remove(category);
-            ViewBag.ParentCategoryId = new SelectList(db.Categories, "CategoryId", "Name", category.ParentCategoryId);
+            ViewBag.ParentCategoryId = new SelectList(db.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
@@ -94,7 +94,7 @@ namespace iPede.Site.Areas.Admin.Controllers
             }
             var parentCategories = db.Categories.ToList();
             parentCategories.Remove(category);
-            ViewBag.ParentCategoryId = new SelectList(db.Categories, "CategoryId", "Name", category.ParentCategoryId);
+            ViewBag.ParentCategoryId = new SelectList(db.Categories, "Id", "Name", category.ParentCategoryId);
             return View(category);
         }
 
