@@ -9,7 +9,7 @@ namespace iPede.Site.Models.Entities
 {
     public class Product
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         public int CategoryId { get; set; }
         

@@ -37,7 +37,7 @@ namespace iPede.Site.Areas.Admin.Controllers
         public ActionResult Add(int id)
         {
             Product p = db.Products.Find(id);
-            if (db.SuggestedProducts.Count(s => s.ProductId == p.ProductId) == 0)
+            if (db.SuggestedProducts.Count(s => s.ProductId == p.Id) == 0)
             {
                 SuggestedProduct suggested = new SuggestedProduct()
                 {

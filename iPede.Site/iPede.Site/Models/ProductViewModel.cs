@@ -25,11 +25,11 @@ namespace iPede.Site.Models
         {
             get
             {
-                return Product.ProductId;
+                return Product.Id;
             }
             set
             {
-                Product.ProductId = value;
+                Product.Id = value;
             }
         }
 

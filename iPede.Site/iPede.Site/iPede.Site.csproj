@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201605140310147_Product_Image_Mapping.Designer.cs">
       <DependentUpon>201605140310147_Product_Image_Mapping.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605140320387_Rename_Product_ProductId.cs" />
+    <Compile Include="Migrations\201605140320387_Rename_Product_ProductId.Designer.cs">
+      <DependentUpon>201605140320387_Rename_Product_ProductId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -594,6 +598,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605140310147_Product_Image_Mapping.resx">
       <DependentUpon>201605140310147_Product_Image_Mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605140320387_Rename_Product_ProductId.resx">
+      <DependentUpon>201605140320387_Rename_Product_ProductId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

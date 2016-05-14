@@ -149,7 +149,7 @@ namespace iPede.Site.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,CategoryID,Name,ShortDescription,FullDescription,Price,DefaultImageIndex")] ProductViewModel model, string sessionKey)
+        public ActionResult Create([Bind(Include = "ID,CategoryID,Name,ShortDescription,FullDescription,Price,DefaultImageIndex")] ProductViewModel model, string sessionKey)
         {
             ProductSessionObject sObject = (ProductSessionObject)Session[sessionKey];
             model.Images = sObject.Images;
@@ -213,7 +213,7 @@ namespace iPede.Site.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,CategoryID,Name,ShortDescription,FullDescription,Price,DefaultImageIndex")] ProductViewModel model, string sessionKey)
+        public ActionResult Edit([Bind(Include = "ID,CategoryID,Name,ShortDescription,FullDescription,Price,DefaultImageIndex")] ProductViewModel model, string sessionKey)
         {
             ProductSessionObject sObject = (ProductSessionObject)Session[sessionKey];
             model.Images = sObject.Images;
@@ -223,7 +223,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 db.Entry(model.Product).State = EntityState.Modified;
                 //O objeto obtido via POST não contém as informações de imagem, mas o do DataContext sim.
                 //Ao recuperarmos ele, ele terá as informações atualizadas (vide linha anterior) e também as imagens.
-                model.Product = db.Products.Include(path => path.Images).Single(item => item.ProductId == model.ProductId);
+                model.Product = db.Products.Include(path => path.Images).Single(item => item.Id == model.ProductId);
 
                 //Buscando os itens que estão no Model atual, mas não no banco de dados
                 var removedImages = model.Product.Images.Where(dbItem =>

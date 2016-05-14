@@ -64,7 +64,7 @@ namespace iPede.Site.Controllers
                 cart.Items.ForEach(cartItem => {
                     order.Items.Add(
                         new OrderItem {
-                        ProductId = cartItem.Product.ProductId,
+                        ProductId = cartItem.Product.Id,
                         Quantity = cartItem.Ammount,
                         Price = cartItem.Ammount * cartItem.Product.Price } );
                 });
@@ -85,7 +85,7 @@ namespace iPede.Site.Controllers
             ShoppingCartViewModel cart = GetCart();
             Product product = db.Products.Find(id);
 
-            if (cart.Items.Count(item => item.Product.ProductId == id) == 0)
+            if (cart.Items.Count(item => item.Product.Id == id) == 0)
             {
                 cart.Items.Add(new ShoppingCartViewModelItem() { Product = product, Ammount = 1 });
             }
@@ -116,7 +116,7 @@ namespace iPede.Site.Controllers
 
         private ActionResult GetCartJson(ShoppingCartViewModel cart)
         {
-            return Json(new { ProductIds = cart.Items.Select(item => item.Product.ProductId) });
+            return Json(new { ProductIds = cart.Items.Select(item => item.Product.Id) });
         }
 
         private ShoppingCartViewModel GetCart()

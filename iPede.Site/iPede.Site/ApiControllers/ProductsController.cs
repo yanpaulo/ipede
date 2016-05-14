@@ -70,7 +70,7 @@ namespace iPede.Site.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            if (id != product.ProductId)
+            if (id != product.Id)
             {
                 return BadRequest();
             }
@@ -108,7 +108,7 @@ namespace iPede.Site.ApiControllers
             db.Products.Add(product);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = product.ProductId }, product);
+            return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
 
         // DELETE: api/Products/5
@@ -140,7 +140,7 @@ namespace iPede.Site.ApiControllers
 
         private bool ProductExists(int id)
         {
-            return db.Products.Count(e => e.ProductId == id) > 0;
+            return db.Products.Count(e => e.Id == id) > 0;
         }
 
         private CategoryDTO MapCategory(Category c)
@@ -170,7 +170,7 @@ namespace iPede.Site.ApiControllers
         {
             p.MainImageUrl = Url.Content(p.MainImageUrl);
             p.MainImageThumbUrl = Url.Content(p.MainImageThumbUrl);
-            p.IsSuggested = db.SuggestedProducts.ToList().Count(s => s.Product.ProductId == p.ProductId) > 0;
+            p.IsSuggested = db.SuggestedProducts.ToList().Count(s => s.Product.Id == p.ProductId) > 0;
 
             return p;
         }
