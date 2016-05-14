@@ -228,7 +228,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 //Buscando os itens que estão no Model atual, mas não no banco de dados
                 var removedImages = model.Product.Images.Where(dbItem =>
                     sObject.Images.Count(sessionItem =>
-                        sessionItem.ProductImageId == dbItem.ProductImageId) == 0).ToList();
+                        sessionItem.Id == dbItem.Id) == 0).ToList();
 
                 foreach (var image in removedImages)
                 {
@@ -254,7 +254,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 }
 
                 //Inclui as imagens novas do Model
-                foreach (var item in sObject.Images.Where(item => item.ProductImageId == 0))
+                foreach (var item in sObject.Images.Where(item => item.Id == 0))
                 {
                     model.Product.Images.Add(item);
                 }
@@ -265,10 +265,10 @@ namespace iPede.Site.Areas.Admin.Controllers
                 {
                     ProductImage defaultImage = model.Images[model.DefaultImageIndex.Value];
                     //Se for uma imagem já presente no DB
-                    if (defaultImage.ProductImageId != 0)
+                    if (defaultImage.Id != 0)
                     {
                         model.MainImage = null;
-                        model.Product.MainImageId = model.Images[model.DefaultImageIndex.Value].ProductImageId;
+                        model.Product.MainImageId = model.Images[model.DefaultImageIndex.Value].Id;
                     }
                     //Se não, se for recém postada
                     else

@@ -39,16 +39,17 @@ namespace iPede.Site.Models.Entities
             }
         }
 
+        public int Id { get; set; }
+
+        public int ProductId { get; set; }
+
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// Tells whether the Filename/ThumbFilename properties contains a custom file path.
         /// </summary>
         public bool CustomDirectory { get; set; }
         
-        public int ProductImageId { get; set; }
-
-        public int ProductId { get; set; }
-
         /// <summary>
         /// Contains the name or a custom path for the image file.
         /// </summary>
@@ -58,7 +59,7 @@ namespace iPede.Site.Models.Entities
         /// Contains the name or a custom path for the thumbnail image file.
         /// </summary>
         public string ThumbFilename { get; set; }
-
+        
         /// <summary>
         /// Gets the relative or absolute Url for the image file (which of those is more apropriate).
         /// </summary>
@@ -96,7 +97,6 @@ namespace iPede.Site.Models.Entities
                 }
             }
         }
-        
-        public virtual Product Product { get; set; }
+
     }
 }
