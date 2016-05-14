@@ -12,9 +12,7 @@ namespace iPede.Site.Models.Entities
         public int ProductId { get; set; }
 
         public int CategoryId { get; set; }
-
-        public int? MainImageId { get; set; }
-
+        
         [Required]
         [Display(Name="Nome")]
         public string Name { get; set; }
@@ -34,7 +32,8 @@ namespace iPede.Site.Models.Entities
 
         public virtual ICollection<ProductImage> Images { get; set; }
 
-        [ForeignKey("MainImageId")]
+        public int? MainImageId { get; set; }
+
         public virtual ProductImage MainImage { get; set; }
 
         /// <summary>

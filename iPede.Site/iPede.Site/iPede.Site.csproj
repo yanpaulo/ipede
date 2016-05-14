@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201605132002488_Rename_Category_CategoryId.Designer.cs">
       <DependentUpon>201605132002488_Rename_Category_CategoryId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605140249155_Product_MainImage_Mapping.cs" />
+    <Compile Include="Migrations\201605140249155_Product_MainImage_Mapping.Designer.cs">
+      <DependentUpon>201605140249155_Product_MainImage_Mapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605140310147_Product_Image_Mapping.cs" />
+    <Compile Include="Migrations\201605140310147_Product_Image_Mapping.Designer.cs">
+      <DependentUpon>201605140310147_Product_Image_Mapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -580,6 +588,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605132002488_Rename_Category_CategoryId.resx">
       <DependentUpon>201605132002488_Rename_Category_CategoryId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605140249155_Product_MainImage_Mapping.resx">
+      <DependentUpon>201605140249155_Product_MainImage_Mapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605140310147_Product_Image_Mapping.resx">
+      <DependentUpon>201605140310147_Product_Image_Mapping.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,5 +27,24 @@ namespace iPede.Site.Models.Entities
         {
             
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //Maps Product's MainImage
+            //The other side of the mapping is done via class annotation.
+            modelBuilder.Entity<Product>()
+                .HasOptional(p => p.MainImage)
+                .WithMany()
+                .HasForeignKey(p => p.MainImageId);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Images)
+                .WithRequired(im => im.Product)
+                .HasForeignKey(im => im.ProductId)
+                .WillCascadeOnDelete();
+
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

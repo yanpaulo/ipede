@@ -137,7 +137,7 @@ namespace iPede.Site.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "FullName");
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "FullName");
             string key = GenerateSessionKey();
             Session[key] = new ProductSessionObject();
             ViewBag.sessionKey = key;
@@ -167,7 +167,7 @@ namespace iPede.Site.Areas.Admin.Controllers
             }
 
             ViewBag.defaultImageIndex = model.DefaultImageIndex;
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "FullName", model.CategoryId);
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "FullName", model.CategoryId);
 
             return View(model);
         }
@@ -204,7 +204,7 @@ namespace iPede.Site.Areas.Admin.Controllers
             Session[key] = sObject;
             ViewBag.DefaultImageIndex = defaultImageIndex;
             ViewBag.sessionKey = key;
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "FullName", product.CategoryId);
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "FullName", product.CategoryId);
             return View(viewModel);
         }
 
@@ -282,7 +282,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "FullName", model.CategoryId);
+            ViewBag.CategoryID = new SelectList(db.Categories, "ID", "FullName", model.CategoryId);
             return View(model);
         }
 
