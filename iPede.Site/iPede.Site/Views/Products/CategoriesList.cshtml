@@ -6,7 +6,7 @@
     <div class="list-group">
         @foreach (var item in Model)
         {
-            <a href="@Url.Action("Category", new { id = item.CategoryId })" class="list-group-item">
+            <a href="@Url.Action("Category", new { id = item.Id })" class="list-group-item">
                 <i class="fa fa-chevron-right"></i>
                 @item.Name
             </a>
