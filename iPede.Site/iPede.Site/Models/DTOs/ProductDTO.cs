@@ -7,7 +7,7 @@ namespace iPede.Site.Models.DTOs
 {
     public class ProductDTO
     {
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
         public int CategoryId { get; set; }
 

@@ -170,7 +170,7 @@ namespace iPede.Site.ApiControllers
         {
             p.MainImageUrl = Url.Content(p.MainImageUrl);
             p.MainImageThumbUrl = Url.Content(p.MainImageThumbUrl);
-            p.IsSuggested = db.SuggestedProducts.ToList().Count(s => s.Product.Id == p.ProductId) > 0;
+            p.IsSuggested = db.SuggestedProducts.ToList().Count(s => s.Product.Id == p.Id) > 0;
 
             return p;
         }
