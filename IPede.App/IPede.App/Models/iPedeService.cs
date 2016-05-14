@@ -87,7 +87,7 @@ namespace IPede.App.Models
         {
             return new Category
             {
-                Id = o["CategoryId"],
+                Id = o["Id"],
                 Name = o["Name"],
                 ParentCategoryId = IntFromJson(o["ParentCategoryId"]),
                 ParentCategoryName = StringFromJson(o["ParentCategoryName"]),
@@ -100,7 +100,7 @@ namespace IPede.App.Models
         {
             return new Product
             {
-                ProductId = o["ProductId"],
+                ProductId = o["Id"],
                 CategoryId = o["CategoryId"],
                 Name = o["Name"],
                 ShortDescription = o["ShortDescription"],
