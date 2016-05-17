@@ -20,6 +20,8 @@ namespace iPede.Site
                 .ForMember(dest => dest.MainImageUrl, opt => opt.MapFrom(source => source.MainOrNoImage.Url));
 
                 cfg.CreateMap<Category, CategoryDTO>();
+                cfg.CreateMap<Order, OrderDTO>();
+                cfg.CreateMap<OrderItem, OrderItemDTO>();
             });
         }
 
