@@ -7,7 +7,7 @@ namespace iPede.Site.Models.DTOs
 {
     public class OrderDTO
     {
-        public int OrderId { get; set; }
+        public int Id { get; set; }
 
         public ICollection<OrderItemDTO> Items { get; set; }
 

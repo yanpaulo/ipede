@@ -2,7 +2,7 @@
 {
     public class OrderItemDTO
     {
-        public int OrderItemId { get; set; }
+        public int Id { get; set; }
 
         public int ProductId { get; set; }
 

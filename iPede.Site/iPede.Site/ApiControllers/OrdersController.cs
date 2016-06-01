@@ -54,7 +54,7 @@ namespace iPede.Site.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            if (id != order.OrderId)
+            if (id != order.Id)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace iPede.Site.ApiControllers
             db.Orders.Add(order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = order.OrderId }, order);
+            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
         // DELETE: api/Orders/5
@@ -122,7 +122,7 @@ namespace iPede.Site.ApiControllers
 
         private bool OrderExists(int id)
         {
-            return db.Orders.Count(e => e.OrderId == id) > 0;
+            return db.Orders.Count(e => e.Id == id) > 0;
         }
     }
 }
