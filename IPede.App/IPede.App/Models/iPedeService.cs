@@ -42,16 +42,22 @@ namespace IPede.App.Models
                 .OrderBy(c => c.Name)
                 .Select(c =>
                 {
+                    //For each Category
+                    //Get a list of all SubCategories
                     var subList = c.SubCategories.ToList();
-                    //Adds a new nameless Category for products outside of sub-categories.
+                    //If Category has Products outside any of its sub-categories
                     if (c.Products.Count() > 0)
                     {
+                        //Add them to a new SubCategory without name
                         subList.Add(new Category { Name = "", Products = c.Products }); 
                     }
+                    
+                    //Order SubCategories by name
                     c.SubCategories = subList
                     .OrderBy(sub => sub.Name)
                     .Select(sub =>
                     {
+                        //For each SubCategory, order its children Products.
                         sub.Products = sub.Products.OrderBy(p => p.Name);
                         return sub;
                     }
