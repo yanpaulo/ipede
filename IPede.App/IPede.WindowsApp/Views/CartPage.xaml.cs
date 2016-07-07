@@ -27,7 +27,7 @@ namespace IPede.WindowsApp.Views
     {
         public CartPage()
         {
-            this.DataContext = Cart.GetInstance().Items;
+            this.DataContext = ModelContext.Instance.Cart.Items;
             this.InitializeComponent();
         }
 

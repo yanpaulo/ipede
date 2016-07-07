@@ -41,7 +41,7 @@ namespace IPede.WindowsApp.Views
 
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            Cart cart = Cart.GetInstance();
+            Cart cart = ModelContext.Instance.Cart;
             Product p = (Product)this.DataContext;
             cart.AddItem(p);
             AddToCartButton.Content = "No Pedido";

@@ -8,19 +8,13 @@ namespace IPede.App.Models
 {
     public class Cart
     {
-        private static Cart instance = new Cart();
         private List<CartItem> _items;
 
-        private Cart()
+        public Cart()
         {
             _items = new List<CartItem>();
         }
-
-        public static Cart GetInstance()
-        {
-            return instance;
-        }
-
+        
         public CartItem[] Items
         {
             get { return _items.ToArray(); }
