@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Json;
+using Newtonsoft.Json;
 
 namespace IPede.App.Models
 {
@@ -71,62 +71,14 @@ namespace IPede.App.Models
         {
             HttpResponseMessage response = await httpClient.GetAsync(productsUri);
             var text = await response.Content.ReadAsStringAsync();
-
-            var jsResponse = JsonArray.Parse(text) as JsonArray;
-            return jsResponse
-                .Where(o => o.JsonType == JsonType.Object)
-                .Select(o => ProductFromJson(o as JsonObject));
+            return JsonConvert.DeserializeObject<IEnumerable<Product>>(text);
         }
 
         private async Task<IEnumerable<Category>> LoadProductsCategorized()
         {
             HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri);
             var text = await response.Content.ReadAsStringAsync();
-
-            JsonArray jsResponse = JsonArray.Parse(text) as JsonArray;
-            return jsResponse
-                .Where(o => o.JsonType == JsonType.Object)
-                .Select(o => CategoryFromJson(o as JsonObject));
-        }
-
-        private Category CategoryFromJson(JsonObject o)
-        {
-            return new Category
-            {
-                Id = o["Id"],
-                Name = o["Name"],
-                ParentCategoryId = IntFromJson(o["ParentCategoryId"]),
-                ParentCategoryName = StringFromJson(o["ParentCategoryName"]),
-                SubCategories = ((JsonArray)o["SubCategories"]).Select(p => CategoryFromJson(p as JsonObject)),
-                Products = ((JsonArray)o["Products"]).Select(p => ProductFromJson(p as JsonObject))
-            };
-        }
-
-        private Product ProductFromJson(JsonObject o)
-        {
-            return new Product
-            {
-                ProductId = o["Id"],
-                CategoryId = o["CategoryId"],
-                Name = o["Name"],
-                ShortDescription = o["ShortDescription"],
-                FullDescription = StringFromJson(o["FullDescription"]),
-                Price = o["Price"],
-                CategoryName = o["CategoryName"],
-                MainImageUrl = StringFromJson(o["MainImageUrl"]),
-                MainImageThumbUrl = StringFromJson(o["MainImageThumbUrl"]),
-                IsSuggested = o["IsSuggested"]
-            };
-        }
-
-        private string StringFromJson(JsonValue value)
-        {
-            return value?.JsonType == JsonType.String ? value : null;
-        }
-
-        private int? IntFromJson(JsonValue value)
-        {
-            return value?.JsonType == JsonType.Number ? (int?)value : null;
+            return JsonConvert.DeserializeObject<IEnumerable<Category>>(text);
         }
     }
 }
