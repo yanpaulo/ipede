@@ -8,14 +8,14 @@ namespace IPede.App.Models
 {
     public class Cart
     {
-        private List<CartItem> _items;
+        private List<OrderItem> _items;
 
         public Cart()
         {
-            _items = new List<CartItem>();
+            _items = new List<OrderItem>();
         }
         
-        public CartItem[] Items
+        public OrderItem[] Items
         {
             get { return _items.ToArray(); }
         }
@@ -29,7 +29,7 @@ namespace IPede.App.Models
             }
             else
             {
-                _items.Add(new CartItem { Product = p, Quantity = 1 }); 
+                _items.Add(new OrderItem { Product = p, Quantity = 1 }); 
             }
         }
 

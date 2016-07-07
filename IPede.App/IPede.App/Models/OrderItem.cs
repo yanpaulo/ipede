@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IPede.App.Models
 {
-    public class CartItem
+    public class OrderItem
     {
         public Product Product { get; set; }
         public float Quantity { get; set; }
