@@ -7,7 +7,7 @@ namespace iPede.Site.Models.Entities
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        public int Id { get; set; }
 
         public virtual ICollection<OrderItem> Items { get; set; }
 

@@ -28,7 +28,7 @@ namespace iPede.Site.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Include("Items.Product").SingleOrDefault(item => item.OrderId == id);
+            Order order = db.Orders.Include("Items.Product").SingleOrDefault(item => item.Id == id);
             if (order == null)
             {
                 return HttpNotFound();

@@ -8,7 +8,7 @@ namespace iPede.Site.Models.Entities
 {
     public class OrderStatus
     {
-        public int OrderStatusId { get; set; }
+        public int Id { get; set; }
         [DisplayName("Status")]
         public string Name { get; set; }
     }
