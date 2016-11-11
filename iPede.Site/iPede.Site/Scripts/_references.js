@@ -2,7 +2,6 @@
 /// <reference path="admin-suggested.js" />
 /// <reference path="ai.0.15.0-build58334.min.js" />
 /// <reference path="bootstrap.js" />
-/// <reference path="fontawesome-iconpicker.min.js" />
 /// <reference path="home.js" />
 /// <reference path="jquery.etalage.min.js" />
 /// <reference path="jquery.fileupload/cors/jquery.postmessage-transport.js" />

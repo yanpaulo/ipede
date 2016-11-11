@@ -71,8 +71,7 @@ namespace iPede.Site
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
                             "~/Scripts/jquery-{version}.js",
                             "~/Scripts/bootstrap.js",
-                            "~/Scripts/respond.js",
-                            "~/Scripts/fontawesome-iconpicker.min.js"));
+                            "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin-suggested").Include(
                              "~/Scripts/admin-suggested.js"));
@@ -80,8 +79,7 @@ namespace iPede.Site
             bundles.Add(new StyleBundle("~/Content/admin-css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-responsive.css",
-                      "~/Content/site.css",
-                      "~/Content/fontawesome-iconpicker.min.css")); 
+                      "~/Content/site.css")); 
             #endregion
             
             // Definir EnableOptimizations como false para depuração. Para obter mais informações,

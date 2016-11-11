@@ -282,7 +282,6 @@
     <Content Include="Content\font-awesome-ie7.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\fontawesome-iconpicker.min.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\images\1.jpg" />
     <Content Include="Content\images\busy.gif" />
@@ -482,7 +481,6 @@
     <None Include="Properties\PublishProfiles\Filesystem.pubxml" />
     <None Include="Properties\PublishProfiles\RaveHost.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\fontawesome-iconpicker.min.js" />
     <Content Include="Scripts\home.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
