@@ -225,10 +225,10 @@ namespace iPede.Site.Areas.Admin.Controllers
                 //Ao recuperarmos ele, ele terá as informações atualizadas (vide linha anterior) e também as imagens.
                 model.Product = db.Products.Include(path => path.Images).Single(item => item.Id == model.ProductId);
 
-                //Buscando os itens que estão no Model atual, mas não no banco de dados
+                //Buscando os itens que estão no banco de dados, mas não estão no Model atual.
                 var removedImages = model.Product.Images.Where(dbItem =>
-                    sObject.Images.Count(sessionItem =>
-                        sessionItem.Id == dbItem.Id) == 0).ToList();
+                    sObject.Images.Count(sessionItem => sessionItem.Id == dbItem.Id) == 0)
+                    .ToList();
 
                 foreach (var image in removedImages)
                 {
