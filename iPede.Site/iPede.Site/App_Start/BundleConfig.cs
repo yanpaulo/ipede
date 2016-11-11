@@ -27,6 +27,7 @@ namespace iPede.Site
                       "~/Content/jQuery.FileUpload/css/jquery.fileupload.css")); 
 
             #region Site
+
             #region Script
             //Geral
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
@@ -61,27 +62,33 @@ namespace iPede.Site
 
             bundles.Add(new StyleBundle("~/Content/cart-css").Include(
                       "~/Content/font-awesome.css",
-                      "~/Content/cart.css")); 
- 
+                      "~/Content/cart.css"));
+
             #endregion
 
             #endregion
 
             #region Admin
+
+            #region Script
             bundles.Add(new ScriptBundle("~/bundles/admin").Include(
-                            "~/Scripts/jquery-{version}.js",
-                            "~/Scripts/bootstrap.js",
-                            "~/Scripts/respond.js"));
+                                "~/Scripts/jquery-{version}.js",
+                                "~/Scripts/bootstrap.js",
+                                "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin-suggested").Include(
                              "~/Scripts/admin-suggested.js"));
-            
-            bundles.Add(new StyleBundle("~/Content/admin-css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-responsive.css",
-                      "~/Content/site.css")); 
             #endregion
-            
+
+            #region Style
+            bundles.Add(new StyleBundle("~/Content/admin-css").Include(
+                          "~/Content/bootstrap.css",
+                          "~/Content/bootstrap-responsive.css",
+                          "~/Content/site.css"));  
+            #endregion
+
+            #endregion
+
             // Definir EnableOptimizations como false para depuração. Para obter mais informações,
             // visite http://go.microsoft.com/fwlink/?LinkId=301862
             //BundleTable.EnableOptimizations = true;

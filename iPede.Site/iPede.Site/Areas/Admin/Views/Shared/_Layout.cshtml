@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - iPede</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    
+
     @Styles.Render("~/Content/admin-css")
     @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
@@ -43,23 +43,6 @@
 
     @Scripts.Render("~/bundles/admin")
     @RenderSection("scripts", required: false)
-
-    <script>
-    $(function () {
-
-        $('.icp').iconpicker();
-
-        // Events sample:
-        // This event is only triggered when the actual input value is changed
-        // by user interaction
-        $('.icp').on('iconpickerSelected', function (e) {
-            $('.lead .picker-target').get(0).className = 'picker-target fa-3x ' +
-                    e.iconpickerInstance.options.iconBaseClass + ' ' +
-                    e.iconpickerInstance.getValue(e.iconpickerValue);
-        });
-    });
-    </script>
-
 
 </body>
 </html>
