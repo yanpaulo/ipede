@@ -35,11 +35,7 @@ namespace iPede.Site
                         "~/Scripts/respond.js",
                 //Custom js
                         "~/Scripts/main.js"));
-
-            //Home page
-            bundles.Add(new ScriptBundle("~/bundles/home").Include(
-                      "~/Scripts/fwslider.js"));
-
+            
             //Product
             bundles.Add(new ScriptBundle("~/bundles/product-js").Include(
                     "~/Scripts/jquery.etalage.min.js",
@@ -59,11 +55,6 @@ namespace iPede.Site
                       "~/Content/bootstrap-responsive.css",
                       "~/Content/site.css",
                       "~/Content/misc.css"));
-
-            //Home
-            bundles.Add(new StyleBundle("~/Content/home-css").Include(
-                      "~/Content/fwslider.css",
-                      "~/Content/style-home.css"));
 
             bundles.Add(new StyleBundle("~/Content/product-css").Include(
                       "~/Content/etalage.css"));
@@ -85,8 +76,7 @@ namespace iPede.Site
 
             bundles.Add(new ScriptBundle("~/bundles/admin-suggested").Include(
                              "~/Scripts/admin-suggested.js"));
-
-
+            
             bundles.Add(new StyleBundle("~/Content/admin-css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-responsive.css",

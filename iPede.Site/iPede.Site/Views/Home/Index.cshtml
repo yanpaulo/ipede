@@ -3,18 +3,8 @@
     ViewBag.Title = "Home";
 }
 
-@*@section styles{
-    @Styles.Render("~/Content/home-css")
-}
-
-@section mainTop {
-    <div class="banner">
-        @Html.Partial("Banner", Model.BannerItems)
-    </div>
-}*@
 
 @section scripts{
-    @Scripts.Render("~/bundles/home")
     <script>
         updateCart();
     </script>
