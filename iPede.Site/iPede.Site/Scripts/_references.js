@@ -17,6 +17,7 @@
 /// <reference path="jquery.fileupload/jquery.fileupload-validate.js" />
 /// <reference path="jquery.fileupload/jquery.fileupload-video.js" />
 /// <reference path="jquery.fileupload/jquery.iframe-transport.js" />
+/// <reference path="jquery.fileupload/vendor/jquery.ui.widget.js" />
 /// <reference path="jquery.validate.js" />
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="jquery-1.10.2.js" />

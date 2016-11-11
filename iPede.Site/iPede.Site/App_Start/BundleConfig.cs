@@ -19,7 +19,7 @@ namespace iPede.Site
 
 
             bundles.Add(new ScriptBundle("~/bundles/file-upload").Include(
-                        "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/jQuery.FileUpload/vendor/jquery.ui.widget.js",
                         "~/Scripts/jQuery.FileUpload/jquery.iframe-transport.js",
                         "~/Scripts/jQuery.FileUpload/jquery.fileupload.js"));
 
