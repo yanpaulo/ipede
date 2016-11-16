@@ -4,8 +4,8 @@
     @foreach (var item in Model)
     {
         <div class="col-sm-3">
-            <div class="thumbnail">
-                <img src="@Url.Content(item.MainOrNoImage.Url)?w=200&h=200&mode=pad" />
+            <div class="thumbnail product-list-item">
+                <img src="@Url.Content(item.MainOrNoImage.Url)?w=200&h=200&mode=pad&scale=both" />
                 <div class="caption">
                     <h3>@item.Name</h3>
                     <p>@item.ShortDescription</p>
@@ -16,7 +16,6 @@
                     @Html.ActionLink("Detalhes", "Item", "Products", new { @id = item.Id }, new { @class = "btn btn-default" })
                 </div>
             </div>
-
         </div>
     }
 

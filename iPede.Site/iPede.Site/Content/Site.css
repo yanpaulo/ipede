@@ -16,6 +16,10 @@ textarea {
     max-width: 280px;
 }
 
+.product-list-item {
+    background-color: lightgray;
+}
+
 .uploaded-image{
     border: 1px solid gray;
     display: inline-block;
