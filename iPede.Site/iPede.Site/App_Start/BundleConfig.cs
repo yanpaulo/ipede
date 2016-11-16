@@ -23,7 +23,7 @@ namespace iPede.Site
                         "~/Scripts/jquery.iframe-transport.js",
                         "~/Scripts/jquery.fileupload.js"));
 
-            bundles.Add(new StyleBundle("~/Content/jQuery.FileUpload/css/file-upload").Include(
+            bundles.Add(new StyleBundle("~/Content/file-upload").Include(
                       "~/Content/jquery.fileupload.css")); 
 
             #region Site
