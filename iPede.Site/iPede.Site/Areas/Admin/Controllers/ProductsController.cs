@@ -223,7 +223,7 @@ namespace iPede.Site.Areas.Admin.Controllers
                 db.Entry(model.Product).State = EntityState.Modified;
                 //O objeto obtido via POST não contém as informações de imagem, mas o do DataContext sim.
                 //Ao recuperarmos ele, ele terá as informações atualizadas (vide linha anterior) e também as imagens.
-                model.Product = db.Products.Include(path => path.Images).Single(item => item.Id == model.ProductId);
+                model.Product = db.Products.Include(path => path.Images).Single(item => item.Id == model.Id);
 
                 //Buscando os itens que estão no banco de dados, mas não estão no Model atual.
                 var removedImages = model.Product.Images.Where(dbItem =>

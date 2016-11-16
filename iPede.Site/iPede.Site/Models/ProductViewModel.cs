@@ -21,7 +21,7 @@ namespace iPede.Site.Models
             this.Product = product;
         }
 
-        public int ProductId 
+        public int Id 
         {
             get
             {
