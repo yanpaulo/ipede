@@ -12,6 +12,8 @@ namespace iPede.Site.Models.Entities
 
         public virtual DbSet<Product> Products { get; set; }
 
+        public virtual DbSet<Table> Tables { get; set; }
+
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
         public virtual DbSet<Order> Orders { get; set; }
