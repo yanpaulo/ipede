@@ -23,8 +23,8 @@
     @foreach (var item in Model.Items)
     {
         <div class="col-sm-3">
-            <div class="thumbnail">
-                <img src="@Url.Content(item.Product.MainOrNoImage.Url)?w=200&h=200&mode=pad" />
+            <div class="thumbnail product-list-item">
+                <img src="@Url.Content(item.Product.MainOrNoImage.Url)?w=200&h=200&mode=pad&scale=both" />
                 <div class="caption">
                     <h3>@item.Product.Name</h3>
                     <span class="actual">@Html.DisplayFor(modelItem => item.Price)</span>
