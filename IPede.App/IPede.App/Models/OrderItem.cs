@@ -8,6 +8,7 @@ namespace IPede.App.Models
 {
     public class OrderItem
     {
+        public int? Id { get; set; }
         public Product Product { get; set; }
         public float Quantity { get; set; }
     }

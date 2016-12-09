@@ -11,8 +11,10 @@ namespace IPede.App.Models
     public class IPedeService
     {
         private HttpClient httpClient;
-        private Uri productsUri,
-            categorizedProductsUri;
+        private readonly Uri productsUri,
+            categorizedProductsUri,
+            tablesUri,
+            ordersUri;
         private static IEnumerable<Product> _products;
         private static IEnumerable<Category> _categoriesWithProducts;
 
@@ -21,6 +23,8 @@ namespace IPede.App.Models
             httpClient = new HttpClient();
             productsUri = new Uri("http://ipede.yanscorp.com/api/products");
             categorizedProductsUri = new Uri("http://ipede.yanscorp.com/api/products/categorized");
+            tablesUri = new Uri("http://ipede.yanscorp.com/api/tables");
+            ordersUri = new Uri("http://ipede.yanscorp.com/api/orders");
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
@@ -65,6 +69,21 @@ namespace IPede.App.Models
                     return c;
                 });
             return result;
+        }
+
+        public async Task<Table> GetTable(int id)
+        {
+            HttpResponseMessage response = await httpClient.GetAsync($"{tablesUri}/{id}");
+            var text = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Table>(text);
+        }
+
+        public async Task<Order> PostOrder(Order order)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(ordersUri, content);
+            var text = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Order>(text);
         }
 
         private async Task<IEnumerable<Product>> LoadProducts()

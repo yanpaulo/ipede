@@ -36,10 +36,12 @@
   <ItemGroup>
     <Compile Include="Models\ModelContext.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IPedeService.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
