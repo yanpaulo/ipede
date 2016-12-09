@@ -7,7 +7,7 @@
 <h2>Detalhes</h2>
 
 <div>
-    <h4>Table</h4>
+    <h4>Mesa</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,6 +16,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            QR
+        </dt>
+
+        <dd>
+            <img src="@Url.Action("QR", new { id = Model.Id })" alt="QR Code" /> 
         </dd>
 
     </dl>
