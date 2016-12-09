@@ -8,6 +8,11 @@ namespace iPede.Site.Models.Entities
 {
     public class OrderStatus
     {
+        public static readonly string
+            Placed = "Realizado",
+            Confirmed = "Confirmado",
+            Canceled = "Cancelado";
+
         public int Id { get; set; }
         [DisplayName("Status")]
         public string Name { get; set; }
