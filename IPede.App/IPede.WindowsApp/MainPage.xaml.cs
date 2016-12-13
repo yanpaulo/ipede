@@ -102,6 +102,9 @@ namespace IPede.WindowsApp
                 AppViewBackButtonVisibility.Visible :
                 AppViewBackButtonVisibility.Collapsed;
             SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManager_BackRequested;
+
+            //Clear the back stack so that user can't go back to "scan" page.
+            Frame.BackStack.Clear();
             base.OnNavigatedTo(e);
         }
 

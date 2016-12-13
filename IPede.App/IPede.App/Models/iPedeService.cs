@@ -74,8 +74,15 @@ namespace IPede.App.Models
         public async Task<Table> GetTable(int id)
         {
             HttpResponseMessage response = await httpClient.GetAsync($"{tablesUri}/{id}");
-            var text = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<Table>(text);
+            if (response.IsSuccessStatusCode)
+            {
+                var text = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Table>(text); 
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
         public async Task<Order> PostOrder(Order order)

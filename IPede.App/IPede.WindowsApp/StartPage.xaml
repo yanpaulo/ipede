@@ -19,8 +19,8 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Padding="4" Orientation="Horizontal">
                 <TextBlock Margin="4">Código: </TextBlock>
-                <TextBox></TextBox>
-                <Button Margin="4,0">Ok</Button>
+                <TextBox x:Name="CodeTextBox" KeyDown="CodeTextBox_KeyDown"></TextBox>
+                <Button Margin="4,0" Click="CodeButton_Click">Ok</Button>
             </StackPanel>
             <StackPanel Padding="4">
                 <Button HorizontalAlignment="Center" Click="CameraButton_Click">

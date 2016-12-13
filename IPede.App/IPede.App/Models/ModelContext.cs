@@ -19,5 +19,7 @@ namespace IPede.App.Models
 
         public Cart Cart { get; } = new Cart();
 
+        public Table Table { get; set; }
+
     }
 }

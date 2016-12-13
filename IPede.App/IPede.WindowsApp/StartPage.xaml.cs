@@ -1,10 +1,13 @@
-﻿using System;
+﻿using IPede.App.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,7 +26,9 @@ namespace IPede.WindowsApp
     /// </summary>
     public sealed partial class StartPage : Page
     {
-        
+        private IPedeService _service = new IPedeService();
+        private ModelContext _context = ModelContext.Instance;
+
         public StartPage()
         {
             this.InitializeComponent();
@@ -31,23 +36,49 @@ namespace IPede.WindowsApp
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
 
         }
 
         private async void CameraButton_Click(object sender, RoutedEventArgs e)
         {
-            var scanner = new MobileBarcodeScanner
-            {
-            };
-
+            var scanner = new MobileBarcodeScanner();
 
             var result = await scanner.Scan();
-            if (result != null)
-            {
 
-            }
-            
+            await ParseCode(result?.Text);
+
         }
+
+        private async void CodeButton_Click(object sender, RoutedEventArgs e)
+        {
+            await ParseCode(CodeTextBox.Text);
+        }
+
+        private async void CodeTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                e.Handled = true;
+                await ParseCode(CodeTextBox.Text);
+            }
+        }
+
+        private async Task ParseCode(string s)
+        {
+            try
+            {
+                int code = int.Parse(s);
+                var table = await _service.GetTable(code);
+                _context.Table = table;
+                Frame.Navigate(typeof(MainPage));
+            }
+            catch (Exception)
+            {
+                await new MessageDialog("Código Inválido.").ShowAsync();
+            }
+        }
+
+        
     }
 }
