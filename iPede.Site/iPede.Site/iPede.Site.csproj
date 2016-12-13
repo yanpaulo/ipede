@@ -193,6 +193,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\OrdersController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
+    <Compile Include="ApiControllers\TablesController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Models\DTOs\OrderDTO.cs" />
     <Compile Include="Models\DTOs\OrderItemDTO.cs" />
     <Compile Include="Models\DTOs\ProductDTO.cs" />
+    <Compile Include="Models\DTOs\TableDTO.cs" />
     <Compile Include="Models\Entities\Category.cs" />
     <Compile Include="Models\Entities\iPedeContext.cs" />
     <Compile Include="Models\Entities\Order.cs" />

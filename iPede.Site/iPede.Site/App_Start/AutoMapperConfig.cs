@@ -22,6 +22,7 @@ namespace iPede.Site
                 cfg.CreateMap<Category, CategoryDTO>();
                 cfg.CreateMap<Order, OrderDTO>();
                 cfg.CreateMap<OrderItem, OrderItemDTO>();
+                cfg.CreateMap<Table, TableDTO>();
             });
         }
 
