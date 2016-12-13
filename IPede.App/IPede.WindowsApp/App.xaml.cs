@@ -77,7 +77,7 @@ namespace IPede.WindowsApp
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(StartPage), e.Arguments);
             }
 
             // Register a global back event handler. This can be registered on a per-page-bases if you only have a subset of your pages
