@@ -121,11 +121,10 @@ namespace iPede.Site.Controllers
 
         public ActionResult QR(int id)
         {
-            string url = $"{Request.Url.Scheme}://{Request.Url.Host}/api/Tables/{id}";
             var qrWriter = new BarcodeWriter();
             qrWriter.Format = BarcodeFormat.QR_CODE;
             qrWriter.Options = new EncodingOptions() { Height = 240, Width = 240, Margin = 0 };
-            var bitmap = qrWriter.Write(url);
+            var bitmap = qrWriter.Write(id.ToString());
             var stream = new MemoryStream();
             
             bitmap.Save(stream, ImageFormat.Png);
