@@ -5,12 +5,15 @@
     xmlns:local="using:IPede.WindowsApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loaded="Page_Loaded">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="pageGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
@@ -20,8 +23,8 @@
             <TextBlock Text="{Binding Path=ActiveOrder.Id,FallbackValue='Nenhum.'}"></TextBlock>
         </StackPanel>
         <TextBlock Grid.Row="2" Padding="4">Seus pedidos:</TextBlock>
-        
-        <ListView ItemsSource="{Binding Table.Orders}" SelectedItem="{Binding ActiveOrder}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        <ListView Grid.Row="3" ItemsSource="{Binding Table.Orders}" SelectedItem="{Binding ActiveOrder}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -32,5 +35,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <CommandBar x:Name="commandBar">
+            <AppBarButton x:Name="AddButton" Icon="Add" Label="Novo pedido" Click="AddButton_Click"></AppBarButton>
+        </CommandBar>
     </Grid>
 </Page>

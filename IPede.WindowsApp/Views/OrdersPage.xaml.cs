@@ -32,10 +32,27 @@ namespace IPede.WindowsApp.Views
             this.InitializeComponent();
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Hides MainPage AppBar
+            MainPage.Current.BottomAppBar.Visibility = Visibility.Collapsed;
+            //Put the command bar in the bottom row on MainPage.
+            pageGrid.Children.Remove(commandBar);
+            Grid.SetRow(commandBar, 4);
+            MainPage.Current.PageGrid.Children.Add(commandBar);
+        }
+
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var order = (Order)e.ClickedItem;
             _context.ActiveOrder = order;
+            MainPage.Current.AppFrame.Navigate(typeof(CartPage));
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            var o = new Order();
+            _context.Table.Orders.Add(_context.ActiveOrder = new Order());
             MainPage.Current.AppFrame.Navigate(typeof(CartPage));
         }
     }
