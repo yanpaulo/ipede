@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -33,26 +34,19 @@ namespace IPede.WindowsApp
         {
             this.InitializeComponent();
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-
-
-        }
+        
 
         private async void CameraButton_Click(object sender, RoutedEventArgs e)
         {
             var scanner = new MobileBarcodeScanner();
-
             var result = await scanner.Scan();
-
-            await ParseCode(result?.Text);
-
+            await HandleCode(result?.Text);
+            
         }
 
         private async void CodeButton_Click(object sender, RoutedEventArgs e)
         {
-            await ParseCode(CodeTextBox.Text);
+            await HandleCode(CodeTextBox.Text);
         }
 
         private async void CodeTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -60,12 +54,14 @@ namespace IPede.WindowsApp
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 e.Handled = true;
-                await ParseCode(CodeTextBox.Text);
+                await HandleCode(CodeTextBox.Text);
             }
         }
 
-        private async Task ParseCode(string s)
+        private async Task HandleCode(string s)
         {
+            mainPanel.Visibility = Visibility.Collapsed;
+            progressRing.IsActive = true;
             try
             {
                 int code = int.Parse(s);
@@ -77,8 +73,11 @@ namespace IPede.WindowsApp
             {
                 await new MessageDialog("Código Inválido.").ShowAsync();
             }
+            finally
+            {
+                mainPanel.Visibility = Visibility.Visible;
+                progressRing.IsActive = false;
+            }
         }
-
-        
     }
 }

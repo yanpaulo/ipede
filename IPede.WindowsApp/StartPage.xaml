@@ -5,8 +5,8 @@
     xmlns:local="using:IPede.WindowsApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Loaded="Page_Loaded"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -16,7 +16,7 @@
 
         <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="16"></TextBlock>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel x:Name="mainPanel" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Padding="4" Orientation="Horizontal">
                 <TextBlock Margin="4">Código: </TextBlock>
                 <TextBox x:Name="CodeTextBox" KeyDown="CodeTextBox_KeyDown"></TextBox>
@@ -28,5 +28,6 @@
                 </Button>
             </StackPanel>
         </StackPanel>
+        <ProgressRing x:Name="progressRing" Width="40" Height="40" Grid.Row="1"></ProgressRing>
     </Grid>
 </Page>
