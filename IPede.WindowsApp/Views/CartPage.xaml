@@ -14,8 +14,8 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="Pedido" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
-        <ListView Grid.Row="1" ItemsSource="{Binding}">
+        <TextBlock Grid.Row="0" Text="{Binding DisplayName}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
+        <ListView Grid.Row="1" ItemsSource="{Binding Items}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

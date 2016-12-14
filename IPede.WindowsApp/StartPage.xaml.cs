@@ -67,6 +67,9 @@ namespace IPede.WindowsApp
                 int code = int.Parse(s);
                 var table = await _service.GetTable(code);
                 _context.Table = table;
+                _context.Table.Orders.Add(_context.ActiveOrder = new Order());
+                _context.Table.Orders.Add(new Order());
+
                 Frame.Navigate(typeof(MainPage));
             }
             catch (Exception)

@@ -12,14 +12,18 @@ namespace IPede.App.Models
 
         private ModelContext()
         {
-
+            
         }
 
         public static ModelContext Instance => _instance ?? (_instance = new ModelContext());
 
-        public Cart Cart { get; } = new Cart();
+        //public Cart Cart { get; } = new Cart();
 
         public Table Table { get; set; }
+
+        public Order ActiveOrder { get; set; }
+
+        
 
     }
 }

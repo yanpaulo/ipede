@@ -27,7 +27,7 @@ namespace IPede.WindowsApp.Views
         
         public OrdersPage()
         {
-            this.DataContext = _context.Table.Orders;
+            this.DataContext = _context;
 
             this.InitializeComponent();
         }
@@ -35,7 +35,8 @@ namespace IPede.WindowsApp.Views
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var order = (Order)e.ClickedItem;
-            //Faz o que for preciso com esse pedido.
+            _context.ActiveOrder = order;
+            MainPage.Current.AppFrame.Navigate(typeof(CartPage));
         }
     }
 }
