@@ -48,7 +48,7 @@ namespace IPede.WindowsApp
                 },
                 new NavMenuItem()
                 {
-                    Symbol = Symbol.List,
+                    Symbol = Symbol.ViewAll,
                     Label = "Pedidos",
                     DestPage = typeof(OrdersPage)
                 }
