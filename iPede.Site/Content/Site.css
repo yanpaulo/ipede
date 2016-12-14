@@ -20,18 +20,30 @@ textarea {
     background-color: lightgray;
 }
 
-.uploaded-image{
+    .product-list-item .caption {
+        height: 120px;
+        overflow: hidden;
+    }
+
+    .product-list-item .caption h3 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+.uploaded-image {
     border: 1px solid gray;
     display: inline-block;
     margin: 5px;
 }
 
-.uploaded-image div{
-    display: inline-block;
-}
-.uploaded-image div div{
-    display: block;
-}
+    .uploaded-image div {
+        display: inline-block;
+    }
+
+        .uploaded-image div div {
+            display: block;
+        }
 
 #admin-suggested #list {
     background-color: aqua;
