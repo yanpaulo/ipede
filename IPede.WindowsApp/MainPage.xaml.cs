@@ -45,6 +45,12 @@ namespace IPede.WindowsApp
                     Symbol = Symbol.List,
                     Label = "Categorias",
                     DestPage = typeof(CategorizedProductsPage)
+                },
+                new NavMenuItem()
+                {
+                    Symbol = Symbol.List,
+                    Label = "Pedidos",
+                    DestPage = typeof(OrdersPage)
                 }
             });
 
