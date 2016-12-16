@@ -28,6 +28,6 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <ProgressRing x:Name="progressRing" Width="40" Height="40" Grid.Row="1"></ProgressRing>
+        <ProgressRing Grid.Row="1" x:Name="progressRing" Style="{StaticResource DefaultProgressRingStyle}" ></ProgressRing>
     </Grid>
 </Page>

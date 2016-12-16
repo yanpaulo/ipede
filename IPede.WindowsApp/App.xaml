@@ -129,6 +129,11 @@
                 <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundAccentBrush}"></Setter>
             </Style>
 
+            <Style x:Key="DefaultProgressRingStyle" TargetType="ProgressRing">
+                <Setter Property="Width" Value="48"></Setter>
+                <Setter Property="Height" Value="48"></Setter>
+            </Style>
+
 
         </ResourceDictionary>
 

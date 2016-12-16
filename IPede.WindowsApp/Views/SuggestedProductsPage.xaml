@@ -14,7 +14,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="iPede" Style="{StaticResource PageTitleTextBlockStyle}"></TextBlock>
-            <ProgressRing x:Name="progressRing"  Width="60" Height="60" Grid.Row="1"></ProgressRing>
+            <ProgressRing Grid.Row="1" x:Name="progressRing" Style="{StaticResource DefaultProgressRingStyle}" ></ProgressRing>
             <ScrollViewer Grid.Row="1">
                 <ItemsControl HorizontalAlignment="Center"   x:Name="ProductsControl">
                     <ItemsControl.ItemsPanel>
