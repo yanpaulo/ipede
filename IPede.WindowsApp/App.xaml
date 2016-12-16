@@ -124,6 +124,10 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="PageTitleTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextBlockStyle}">
+                <Setter Property="Margin" Value="16"></Setter>
+                <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundAccentBrush}"></Setter>
+            </Style>
 
 
         </ResourceDictionary>
