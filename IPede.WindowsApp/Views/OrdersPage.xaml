@@ -17,7 +17,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="iPede" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="8"></TextBlock>
+        <TextBlock Grid.Row="0" Text="iPede"  Style="{ThemeResource PageTitleTextBlockStyle}"></TextBlock>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <TextBlock Padding="4,0">Pedido Selecionado:</TextBlock>
             <TextBlock Text="{Binding Path=ActiveOrder.Id,FallbackValue='Nenhum.'}"></TextBlock>

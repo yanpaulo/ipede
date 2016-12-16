@@ -12,8 +12,13 @@
         <CollectionViewSource x:Name="cvs" IsSourceGrouped="true" ItemsPath="SubCategories"/>
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ProgressRing x:Name="progressRing"  Width="60" Height="60"></ProgressRing>
-        <SemanticZoom  x:Name="semanticZoom" IsZoomedInViewActive="False" IsZoomOutButtonEnabled="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Categorias" Style="{StaticResource PageTitleTextBlockStyle}"></TextBlock>
+        <ProgressRing Grid.Row="1" x:Name="progressRing"  Width="60" Height="60"></ProgressRing>
+        <SemanticZoom Grid.Row="1"  x:Name="semanticZoom" IsZoomedInViewActive="False" IsZoomOutButtonEnabled="True">
             <SemanticZoom.ZoomedOutView>
                 <ListView SelectionMode="None">
                     <ListView.ItemTemplate>

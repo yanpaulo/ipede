@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Padding="10" Text="{Binding Name, FallbackValue='iPede'}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}"></TextBlock>
+        <TextBlock Text="{Binding Name, FallbackValue='iPede'}" Style="{ThemeResource PageTitleTextBlockStyle}"></TextBlock>
 
         <!--ScrollViewer for small screens. Disabled for big screens-->
         <ScrollViewer  x:Name="MainScrollViewer" Grid.Row="1"
