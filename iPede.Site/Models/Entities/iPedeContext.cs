@@ -45,6 +45,12 @@ namespace iPede.Site.Models.Entities
                 .HasForeignKey(im => im.ProductId)
                 .WillCascadeOnDelete();
 
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.Items)
+                .WithRequired()
+                .HasForeignKey(oi => oi.OrderId)
+                .WillCascadeOnDelete();
+
 
             base.OnModelCreating(modelBuilder);
         }

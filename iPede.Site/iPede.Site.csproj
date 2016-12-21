@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201611161922271_Create_Table.Designer.cs">
       <DependentUpon>201611161922271_Create_Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612211925293_OrderItem_Column_OrderId.cs" />
+    <Compile Include="Migrations\201612211925293_OrderItem_Column_OrderId.Designer.cs">
+      <DependentUpon>201612211925293_OrderItem_Column_OrderId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -561,6 +565,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611161922271_Create_Table.resx">
       <DependentUpon>201611161922271_Create_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211925293_OrderItem_Column_OrderId.resx">
+      <DependentUpon>201612211925293_OrderItem_Column_OrderId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
