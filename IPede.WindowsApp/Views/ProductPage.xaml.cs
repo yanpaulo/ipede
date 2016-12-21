@@ -27,6 +27,7 @@ namespace IPede.WindowsApp.Views
     public sealed partial class ProductPage : Page
     {
         private ModelContext _context = ModelContext.Instance;
+        private IPedeService _service = new IPedeService();
         public ProductPage()
         {
             this.InitializeComponent();
@@ -40,11 +41,14 @@ namespace IPede.WindowsApp.Views
             base.OnNavigatedTo(e);
         }
 
-        private void AddToCartButton_Click(object sender, RoutedEventArgs e)
+        private async void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
             Order order = _context.ActiveOrder;
-            Product p = (Product)this.DataContext;
-            order.AddItem(p);
+            var product = (Product)DataContext;
+            var item = new OrderItem() { OrderId = order.Id,  ProductId = product.Id, Price = product.Price, Quantity = 1 };
+
+            item = await _service.PostOrderItem(item);
+            order.Items.Add(item);
 
             AddToCartButton.Content = "No Pedido";
             AddToCartButton.IsEnabled = false;

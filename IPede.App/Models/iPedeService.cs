@@ -14,7 +14,8 @@ namespace IPede.App.Models
         private readonly Uri productsUri,
             categorizedProductsUri,
             tablesUri,
-            ordersUri;
+            ordersUri,
+            orderItemsUri;
         private static IEnumerable<Product> _products;
         private static IEnumerable<Category> _categoriesWithProducts;
 
@@ -25,6 +26,7 @@ namespace IPede.App.Models
             categorizedProductsUri = new Uri("http://ipede.yanscorp.com/api/products/categorized");
             tablesUri = new Uri("http://ipede.yanscorp.com/api/tables");
             ordersUri = new Uri("http://ipede.yanscorp.com/api/orders");
+            orderItemsUri = new Uri("http://ipede.yanscorp.com/api/orderItems");
         }
 
         public async Task<IEnumerable<Product>> GetProducts()
@@ -92,6 +94,14 @@ namespace IPede.App.Models
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Order>(text);
         }
+        public async Task<OrderItem> PostOrderItem(OrderItem item)
+        {
+            var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(orderItemsUri, content);
+            var text = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<OrderItem>(text);
+        }
+
 
         private async Task<IEnumerable<Product>> LoadProducts()
         {

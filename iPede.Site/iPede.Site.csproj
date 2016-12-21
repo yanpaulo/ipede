@@ -191,6 +191,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\OrderItemsController.cs" />
     <Compile Include="ApiControllers\OrdersController.cs" />
     <Compile Include="ApiControllers\ProductsController.cs" />
     <Compile Include="ApiControllers\TablesController.cs" />
