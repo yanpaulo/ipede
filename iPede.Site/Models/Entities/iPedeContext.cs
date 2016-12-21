@@ -24,6 +24,11 @@ namespace iPede.Site.Models.Entities
 
         public virtual DbSet<SuggestedProduct> SuggestedProducts { get; set; }
 
+        public OrderStatus GetOrgerStatusByName(string name)
+        {
+            return OrderStatuses.SingleOrDefault(os => os.Name == name);
+        }
+
         public iPedeContext()
             : base("DefaultConnection")
         {
