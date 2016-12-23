@@ -105,7 +105,10 @@ namespace IPede.App.Models
             var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
             var response = await httpClient.PostAsync(ORDER_ITEMS_URL, content);
             var text = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<OrderItem>(text);
+            var product = (await GetProducts()).Single(p => p.Id == item.ProductId);
+            item = JsonConvert.DeserializeObject<OrderItem>(text);
+            item.Product = product;
+            return item;
         }
 
 

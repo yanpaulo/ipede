@@ -40,7 +40,7 @@ namespace iPede.Site.ApiControllers
                 return NotFound();
             }
 
-            return Ok(mapper.Map<TableDTO>(table));
+            return Ok(MapTable(table));
         }
 
         // PUT: api/Tables/5
@@ -121,6 +121,21 @@ namespace iPede.Site.ApiControllers
         private bool TableExists(int id)
         {
             return db.Tables.Count(e => e.Id == id) > 0;
+        }
+
+        private TableDTO MapTable(Table t)
+        {
+            var tableDTO = mapper.Map<TableDTO>(t);
+            foreach (var order in tableDTO.Orders)
+            {
+                foreach (var item in order.Items)
+                {
+                    item.Product.MainImageThumbUrl = Url.Content(item.Product.MainImageThumbUrl);
+                    item.Product.MainImageUrl = Url.Content(item.Product.MainImageUrl);
+                }
+            }
+
+            return tableDTO;
         }
     }
 }

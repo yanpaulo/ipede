@@ -16,18 +16,5 @@ namespace IPede.App.Models
         public virtual IList<OrderItem> Items { get; set; } = new List<OrderItem>();
 
         public string DisplayName => $"Pedido {Id}";
-
-        public void AddItem(Product p)
-        {
-            var item = Items.SingleOrDefault(_p => _p.Product.Id == p.Id);
-            if (item != null)
-            {
-                item.Quantity++;
-            }
-            else
-            {
-                Items.Add(new OrderItem { Product = p, Quantity = 1 });
-            }
-        }
     }
 }
