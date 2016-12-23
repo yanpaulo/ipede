@@ -54,7 +54,7 @@ namespace iPede.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                var status = db.GetOrgerStatusByName(OrderStatus.Placed);
+                var status = db.GetOrgerStatusByName(OrderStatus.Open);
                 db.Tables.Add(table);
                 //By default, a new Order is added to the Table, with Placed status.
                 table.Orders = new[] { new Order { Status = status } };

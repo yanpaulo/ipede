@@ -9,6 +9,7 @@ namespace iPede.Site.Models.Entities
     public class OrderStatus
     {
         public static readonly string
+            Open = "Aberto",
             Placed = "Realizado",
             Confirmed = "Confirmado",
             Canceled = "Cancelado";

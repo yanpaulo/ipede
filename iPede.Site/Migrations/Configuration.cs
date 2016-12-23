@@ -29,6 +29,7 @@ namespace iPede.Site.Migrations
             //
             context.OrderStatuses.AddOrUpdate(
               p => p.Name,
+              new OrderStatus { Name = OrderStatus.Open },
               new OrderStatus { Name = OrderStatus.Placed },
               new OrderStatus { Name = OrderStatus.Confirmed },
               new OrderStatus { Name = OrderStatus.Canceled }

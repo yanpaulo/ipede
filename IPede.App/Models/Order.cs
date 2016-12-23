@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace IPede.App.Models
 {
+    public class OrderStatusNames
+    {
+        public static readonly string
+            Open = "Aberto",
+            Placed = "Realizado",
+            Confirmed = "Confirmado",
+            Canceled = "Cancelado";
+    }
+
     public class Order
     {
 
-        public int Id { get; set; } = new Random().Next(10000, 20000);
+        public int Id { get; set; }
 
         public string StatusName { get; set; }
 
