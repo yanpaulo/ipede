@@ -24,7 +24,7 @@ namespace IPede.WindowsApp.Views
     /// </summary>
     public sealed partial class CategorizedProductsPage : Page
     {
-        private IPedeService service = new IPedeService();
+        private IPedeService service = IPedeService.Instance;
 
         public CategorizedProductsPage()
         {

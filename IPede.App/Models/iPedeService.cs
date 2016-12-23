@@ -10,24 +10,30 @@ namespace IPede.App.Models
 {
     public class IPedeService
     {
+        private readonly string
+            SERVICE_URL = "http://ipede.yanscorp.com/api/",
+            PRODUCTS_URL = "products",
+            CATEGORIZED_PRODUCTS_URL = "products/categorized",
+            TABLES_URL = "tables",
+            ORDERS_URL = "orders",
+            ORDER_ITEMS_URL = "orderItems";
+
+        private static IPedeService _instance;
         private HttpClient httpClient;
-        private readonly Uri productsUri,
-            categorizedProductsUri,
-            tablesUri,
-            ordersUri,
-            orderItemsUri;
+        
         private static IEnumerable<Product> _products;
         private static IEnumerable<Category> _categoriesWithProducts;
 
-        public IPedeService()
+        private IPedeService()
         {
-            httpClient = new HttpClient();
-            productsUri = new Uri("http://ipede.yanscorp.com/api/products");
-            categorizedProductsUri = new Uri("http://ipede.yanscorp.com/api/products/categorized");
-            tablesUri = new Uri("http://ipede.yanscorp.com/api/tables");
-            ordersUri = new Uri("http://ipede.yanscorp.com/api/orders");
-            orderItemsUri = new Uri("http://ipede.yanscorp.com/api/orderItems");
+            httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(SERVICE_URL)
+            };
+
         }
+
+        public static IPedeService Instance => _instance ?? (_instance = new IPedeService());
 
         public async Task<IEnumerable<Product>> GetProducts()
         {
@@ -55,9 +61,9 @@ namespace IPede.App.Models
                     if (c.Products.Count() > 0)
                     {
                         //Add them to a new SubCategory without name
-                        subList.Add(new Category { Name = "", Products = c.Products }); 
+                        subList.Add(new Category { Name = "", Products = c.Products });
                     }
-                    
+
                     //Order SubCategories by name
                     c.SubCategories = subList
                     .OrderBy(sub => sub.Name)
@@ -75,11 +81,11 @@ namespace IPede.App.Models
 
         public async Task<Table> GetTable(int id)
         {
-            HttpResponseMessage response = await httpClient.GetAsync($"{tablesUri}/{id}");
+            HttpResponseMessage response = await httpClient.GetAsync($"{TABLES_URL}/{id}");
             if (response.IsSuccessStatusCode)
             {
                 var text = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Table>(text); 
+                return JsonConvert.DeserializeObject<Table>(text);
             }
             else
             {
@@ -90,14 +96,14 @@ namespace IPede.App.Models
         public async Task<Order> PostOrder(Order order)
         {
             var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(ordersUri, content);
+            var response = await httpClient.PostAsync(ORDERS_URL, content);
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Order>(text);
         }
         public async Task<OrderItem> PostOrderItem(OrderItem item)
         {
             var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(orderItemsUri, content);
+            var response = await httpClient.PostAsync(ORDER_ITEMS_URL, content);
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<OrderItem>(text);
         }
@@ -105,14 +111,14 @@ namespace IPede.App.Models
 
         private async Task<IEnumerable<Product>> LoadProducts()
         {
-            HttpResponseMessage response = await httpClient.GetAsync(productsUri);
+            HttpResponseMessage response = await httpClient.GetAsync(PRODUCTS_URL);
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<IEnumerable<Product>>(text);
         }
 
         private async Task<IEnumerable<Category>> LoadProductsCategorized()
         {
-            HttpResponseMessage response = await httpClient.GetAsync(categorizedProductsUri);
+            HttpResponseMessage response = await httpClient.GetAsync(CATEGORIZED_PRODUCTS_URL);
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<IEnumerable<Category>>(text);
         }

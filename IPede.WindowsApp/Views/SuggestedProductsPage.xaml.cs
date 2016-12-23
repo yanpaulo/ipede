@@ -22,7 +22,7 @@ namespace IPede.WindowsApp.Views
     /// </summary>
     public sealed partial class SuggestedProductsPage : Page
     {
-        private IPedeService service = new IPedeService();
+        private IPedeService _service = IPedeService.Instance;
 
         public SuggestedProductsPage()
         {
@@ -32,7 +32,7 @@ namespace IPede.WindowsApp.Views
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             progressRing.IsActive = true;
-            ProductsControl.ItemsSource = await service.GetSuggestedProducts();
+            ProductsControl.ItemsSource = await _service.GetSuggestedProducts();
             progressRing.IsActive = false;
         }
 

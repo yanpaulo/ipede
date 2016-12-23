@@ -27,7 +27,7 @@ namespace IPede.WindowsApp
     /// </summary>
     public sealed partial class StartPage : Page
     {
-        private IPedeService _service = new IPedeService();
+        private IPedeService _service = IPedeService.Instance;
         private ModelContext _context = ModelContext.Instance;
 
         public StartPage()

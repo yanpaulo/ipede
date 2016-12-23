@@ -27,7 +27,7 @@ namespace IPede.WindowsApp.Views
     public sealed partial class ProductPage : Page
     {
         private ModelContext _context = ModelContext.Instance;
-        private IPedeService _service = new IPedeService();
+        private IPedeService _service = IPedeService.Instance;
         public ProductPage()
         {
             this.InitializeComponent();
