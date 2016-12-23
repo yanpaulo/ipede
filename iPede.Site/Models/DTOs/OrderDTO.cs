@@ -11,7 +11,7 @@ namespace iPede.Site.Models.DTOs
 
         public ICollection<OrderItemDTO> Items { get; set; }
 
-        public int OrderStatusId { get; set; }
+        public string StatusName { get; set; }
 
         
     }

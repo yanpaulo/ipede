@@ -19,18 +19,24 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="iPede"  Style="{ThemeResource PageTitleTextBlockStyle}"></TextBlock>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Padding="4,0">Pedido Selecionado:</TextBlock>
-            <TextBlock Text="{Binding Path=ActiveOrder.Id,FallbackValue='Nenhum.'}"></TextBlock>
+            <TextBlock Padding="4,0">Selecionado:</TextBlock>
+            <TextBlock Text="{Binding Path=ActiveOrder.DisplayName,FallbackValue='Nenhum.'}"></TextBlock>
         </StackPanel>
         <TextBlock Grid.Row="2" Padding="4">Seus pedidos:</TextBlock>
 
         <ListView Grid.Row="3" ItemsSource="{Binding Table.Orders}" SelectedItem="{Binding ActiveOrder}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="ms-appx:///Assets/Square44x44Logo.png"></Image>
-                        <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center"></TextBlock>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="ms-appx:///Assets/Square44x44Logo.png"></Image>
+                        <TextBlock Grid.Column="1" Text="{Binding DisplayName}" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock  Grid.Column="1" Text="{Binding StatusName}" Foreground="{ThemeResource SystemControlBackgroundBaseMediumHighBrush}" Style="{ThemeResource CaptionTextBlockStyle}" VerticalAlignment="Bottom"></TextBlock>
+                    </Grid>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

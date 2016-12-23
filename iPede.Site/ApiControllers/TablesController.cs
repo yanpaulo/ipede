@@ -34,7 +34,7 @@ namespace iPede.Site.ApiControllers
         [ResponseType(typeof(TableDTO))]
         public IHttpActionResult GetTable(int id)
         {
-            Table table = db.Tables.Find(id);
+            Table table = db.Tables.Include("Orders.Status").SingleOrDefault(t => t.Id == id);
             if (table == null)
             {
                 return NotFound();
