@@ -11,7 +11,11 @@ namespace IPede.App.Models
     public class IPedeService
     {
         private readonly string
+#if DEBUG
+            SERVICE_URL = "http://localhost:58921/api/",
+#else
             SERVICE_URL = "http://ipede.yanscorp.com/api/",
+#endif
             PRODUCTS_URL = "products",
             CATEGORIZED_PRODUCTS_URL = "products/categorized",
             TABLES_URL = "tables",
@@ -20,7 +24,7 @@ namespace IPede.App.Models
 
         private static IPedeService _instance;
         private HttpClient httpClient;
-        
+
         private static IEnumerable<Product> _products;
         private static IEnumerable<Category> _categoriesWithProducts;
 
