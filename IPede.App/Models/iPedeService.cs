@@ -99,8 +99,9 @@ namespace IPede.App.Models
 
         public async Task<Order> PostOrder(Order order)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
-            var response = await httpClient.PostAsync(ORDERS_URL, content);
+            //var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+            var content = new StringContent("");
+            var response = await httpClient.PostAsync($"{ORDERS_URL}/{order.Id}", content);
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Order>(text);
         }

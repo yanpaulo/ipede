@@ -14,7 +14,14 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding DisplayName}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,10"></TextBlock>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <TextBlock Text="{Binding DisplayName}" Foreground="{ThemeResource SystemControlForegroundAccentBrush}" Style="{ThemeResource HeaderTextBlockStyle}" Margin="10,10,10,0"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="10,0,8,0">Status: </TextBlock>
+                <TextBlock Text="{Binding StatusName}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        
         <ListView Grid.Row="1" ItemsSource="{Binding Items}">
             <ListView.ItemTemplate>
                 <DataTemplate>

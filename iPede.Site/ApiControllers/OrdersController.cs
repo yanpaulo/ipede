@@ -80,6 +80,23 @@ namespace iPede.Site.ApiControllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Route("api/Orders/{id}")]
+        [HttpPost]
+        [ResponseType(typeof(OrderDTO))]
+        public IHttpActionResult PostOrder(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var order = db.Orders.Find(id);
+            order.OrderStatusId = db.OrderStatuses.Single(os => os.Name == OrderStatus.Placed).Id;
+            db.SaveChanges();
+
+            return Ok(MapOrder(order));
+        }
+
         // POST: api/Orders
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
@@ -95,6 +112,7 @@ namespace iPede.Site.ApiControllers
             return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
+        
         // DELETE: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
@@ -123,6 +141,17 @@ namespace iPede.Site.ApiControllers
         private bool OrderExists(int id)
         {
             return db.Orders.Count(e => e.Id == id) > 0;
+        }
+
+        private OrderDTO MapOrder(Order order)
+        {
+            var dto = mapper.Map<OrderDTO>(order);
+            foreach (var item in dto.Items)
+            {
+                item.Product.MainImageThumbUrl = Url.Content(item.Product.MainImageThumbUrl);
+                item.Product.MainImageUrl = Url.Content(item.Product.MainImageUrl);
+            }
+            return dto;
         }
     }
 }
