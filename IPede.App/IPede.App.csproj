@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\ModelContext.cs" />
+    <Compile Include="Models\NotificationEventNames.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Category.cs" />

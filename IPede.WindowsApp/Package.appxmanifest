@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="c9e0c80d-3d0a-4693-8587-54b62d625679" Publisher="CN=yanpa" Version="1.0.0.0" />
+  <Identity Name="35740YanPaulo.IPede" Publisher="CN=CC9F19AD-6186-4D40-AB86-7431148C2FBE" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="c9e0c80d-3d0a-4693-8587-54b62d625679" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>iPede.WindowsApp</DisplayName>
-    <PublisherDisplayName>yanpa</PublisherDisplayName>
+    <DisplayName>IPede</DisplayName>
+    <PublisherDisplayName>Yan Paulo</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="iPede.WindowsApp.App">
-      <uap:VisualElements DisplayName="iPede.WindowsApp" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="iPede.WindowsApp" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="IPede" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="iPede.WindowsApp" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

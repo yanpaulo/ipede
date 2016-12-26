@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace IPede.App.Models
 
         public string StatusName { get; set; }
 
-        public virtual IList<OrderItem> Items { get; set; } = new List<OrderItem>();
+        public virtual ObservableCollection<OrderItem> Items { get; set; } = new ObservableCollection<OrderItem>();
 
         public string DisplayName => $"Pedido {Id}";
     }

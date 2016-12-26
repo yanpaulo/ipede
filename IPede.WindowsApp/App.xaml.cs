@@ -1,4 +1,6 @@
-﻿using IPede.WindowsApp.Views;
+﻿using IPede.App.Models;
+using IPede.WindowsApp.Views;
+using Microsoft.WindowsAzure.Messaging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -51,6 +54,7 @@ namespace IPede.WindowsApp
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+            InitNotificationsAsync();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -132,6 +136,49 @@ namespace IPede.WindowsApp
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private async void InitNotificationsAsync()
+        {
+            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+            var hub = new NotificationHub("IPedeNotificationHub", "Endpoint=sb://ipede-notifications.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=GeA4fieyxBCPTGhvXf9k6i4l/zB1OdjRFU/M7jIBrRE=");
+            var result = await hub.RegisterNativeAsync(channel.Uri);
+            
+            // Displays the registration ID so you know it was successful
+            if (result.RegistrationId != null)
+            {
+                var dialog = new Windows.UI.Popups.MessageDialog("Registration successful: " + result.RegistrationId);
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+
+            channel.PushNotificationReceived += Channel_PushNotificationReceived;
+
+        }
+
+        private async void Channel_PushNotificationReceived(PushNotificationChannel sender, PushNotificationReceivedEventArgs e)
+        {
+            var service = IPedeService.Instance;
+            var context = ModelContext.Instance;
+
+            var jObject = Newtonsoft.Json.Linq.JObject.Parse(e.RawNotification.Content);
+            if ((string)jObject["EventName"] == iPede.App.Models.NotificationEventNames.OrderItemCreated)
+            {
+                var orderItem = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderItem>(jObject["Item"].ToString());
+                var order = context.Table.Orders.SingleOrDefault(o => o.Id == orderItem.OrderId);
+                if (order.Items.Count(oi => oi.Id == orderItem.Id) == 0)
+                {
+                    orderItem.Product = (await service.GetProducts()).SingleOrDefault(p => p.Id == orderItem.ProductId);
+
+                    //Invoke code on UI thread
+                    await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        order.Items.Add(orderItem);
+                    });
+                    
+                }
+            }
         }
     }
 }
