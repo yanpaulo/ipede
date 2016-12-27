@@ -24,6 +24,7 @@ namespace IPede.WindowsApp.Views
     public sealed partial class OrdersPage : Page
     {
         private ModelContext _context = ModelContext.Instance;
+        private IPedeService _service = IPedeService.Instance;
         
         public OrdersPage()
         {
@@ -49,10 +50,10 @@ namespace IPede.WindowsApp.Views
             MainPage.Current.AppFrame.Navigate(typeof(CartPage));
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var o = new Order();
-            _context.Table.Orders.Add(_context.ActiveOrder = new Order());
+            var o = await _service.CreateOrder(_context.Table.Id);
+            _context.Table.Orders.Add(_context.ActiveOrder = o);
             MainPage.Current.AppFrame.Navigate(typeof(CartPage));
         }
     }

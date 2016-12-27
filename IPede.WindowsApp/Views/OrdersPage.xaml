@@ -14,8 +14,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="iPede"  Style="{ThemeResource PageTitleTextBlockStyle}"></TextBlock>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
@@ -24,7 +22,8 @@
         </StackPanel>
         <TextBlock Grid.Row="2" Padding="4">Seus pedidos:</TextBlock>
 
-        <ListView Grid.Row="3" ItemsSource="{Binding Table.Orders}" SelectedItem="{Binding ActiveOrder}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListView Grid.Row="3" ItemsSource="{Binding Table.Orders}" SelectedItem="{Binding ActiveOrder}" ItemClick="ListView_ItemClick" IsItemClickEnabled="True"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

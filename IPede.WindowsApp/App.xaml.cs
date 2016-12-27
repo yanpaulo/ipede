@@ -167,6 +167,7 @@ namespace IPede.WindowsApp
             {
                 var orderItem = Newtonsoft.Json.JsonConvert.DeserializeObject<OrderItem>(jObject["Item"].ToString());
                 var order = context.Table.Orders.SingleOrDefault(o => o.Id == orderItem.OrderId);
+
                 if (order.Items.Count(oi => oi.Id == orderItem.Id) == 0)
                 {
                     orderItem.Product = (await service.GetProducts()).SingleOrDefault(p => p.Id == orderItem.ProductId);
@@ -177,6 +178,21 @@ namespace IPede.WindowsApp
                         order.Items.Add(orderItem);
                     });
                     
+                }
+            }
+            else if ((string)jObject["EventName"] == iPede.App.Models.NotificationEventNames.OrderCreated)
+            {
+                var table = context.Table;
+                var order = Newtonsoft.Json.JsonConvert.DeserializeObject<Order>(jObject["Item"].ToString());
+
+                if (order.TableId == table.Id && table.Orders.Count(o => o.Id == order.Id) == 0)
+                {
+                    //Invoke code on UI thread
+                    await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        context.Table.Orders.Add(order);
+                    });
+
                 }
             }
         }

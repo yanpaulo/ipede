@@ -11,6 +11,8 @@ using System.Web.Http.Description;
 using iPede.Site.Models.Entities;
 using AutoMapper;
 using iPede.Site.Models.DTOs;
+using iPede.Site.Models;
+using System.Threading.Tasks;
 
 namespace iPede.Site.ApiControllers
 {
@@ -95,6 +97,24 @@ namespace iPede.Site.ApiControllers
             db.SaveChanges();
 
             return Ok(MapOrder(order));
+        }
+
+        [Route("api/Orders/Create/{tableId}")]
+        [ResponseType(typeof(Order))]
+        public async Task<IHttpActionResult> CreateOrder(int tableId)
+        {
+            var statisId = db.OrderStatuses.Single(os => os.Name == OrderStatus.Open).Id;
+            var order = new Order { TableId = tableId, OrderStatusId = statisId };
+
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            var orderDTO = mapper.Map<OrderDTO>(order);
+            await NotificationManager.Instance.SendNotificationAsync(NotificationEventNames.OrderCreated, orderDTO);
+
+            return Created($"api/Orders/{orderDTO.Id}", orderDTO);
+            //return CreatedAtRoute("DefaultApi", new { id = orderDTO.Id }, orderDTO);
+
         }
 
         // POST: api/Orders

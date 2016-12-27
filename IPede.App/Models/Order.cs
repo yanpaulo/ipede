@@ -21,6 +21,8 @@ namespace IPede.App.Models
 
         public int Id { get; set; }
 
+        public int TableId { get; set; }
+
         public string StatusName { get; set; }
 
         public virtual ObservableCollection<OrderItem> Items { get; set; } = new ObservableCollection<OrderItem>();

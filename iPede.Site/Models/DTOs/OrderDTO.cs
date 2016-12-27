@@ -9,10 +9,10 @@ namespace iPede.Site.Models.DTOs
     {
         public int Id { get; set; }
 
-        public ICollection<OrderItemDTO> Items { get; set; }
+        public int TableId { get; set; }
 
         public string StatusName { get; set; }
 
-        
+        public ICollection<OrderItemDTO> Items { get; set; }
     }
 }

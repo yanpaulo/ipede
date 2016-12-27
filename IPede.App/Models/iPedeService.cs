@@ -97,6 +97,15 @@ namespace IPede.App.Models
             }
         }
 
+        public async Task<Order> CreateOrder(int tableId)
+        {
+            //var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
+            var content = new StringContent("");
+            var response = await httpClient.PostAsync($"{ORDERS_URL}/Create/{tableId}", content);
+            var text = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Order>(text);
+        }
+
         public async Task<Order> PostOrder(Order order)
         {
             //var content = new StringContent(JsonConvert.SerializeObject(order), Encoding.UTF8, "application/json");
@@ -105,6 +114,7 @@ namespace IPede.App.Models
             var text = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Order>(text);
         }
+
         public async Task<OrderItem> PostOrderItem(OrderItem item)
         {
             var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
